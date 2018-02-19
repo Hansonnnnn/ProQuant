@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-6-3 2:17:17 by Hibernate Tools 5.2.1.Final -->
+<hibernate-mapping>
+    <class name="PO.user.UserStockOwned" table="user_stock_owned" catalog="proquant" optimistic-lock="version">
+        <composite-id name="id" class="PO.user.UserStockOwnedId">
+            <key-property name="username" type="string">
+                <column name="username" length="16" />
+            </key-property>
+            <key-property name="stockcode" type="string">
+                <column name="stockcode" length="45" />
+            </key-property>
+        </composite-id>
+        <property name="stocknum" type="java.lang.Integer">
+            <column name="stocknum" />
+        </property>
+    </class>
+</hibernate-mapping>

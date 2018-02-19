@@ -1,0 +1,212 @@
+/*对个股基本信息添加样式*/
+
+body select:focus{
+    outline: 0;
+}
+.headLabel {
+    padding: 6px;
+    border-left: 5px solid #528FCC;
+    font-size: large;
+    font-weight: bold;
+    background-color: #cfe2f3;
+    margin-bottom: 10px;
+    color: #333333;
+}
+
+#info {
+    background-color: white;
+}
+
+.infoName {
+    display: inline-block;
+    height: 180px;
+    border: 2px solid #EBEFF0;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.infoPrice{
+    display: inline-block;
+    height: 180px;
+    border-width: 2px 2px 2px 0;
+    border-style: solid;
+    border-color: #EBEFF0;
+    margin-left: -5px;
+}
+
+.infoData{
+    padding-top: 25px;
+    text-align: center;
+    display: inline-block;
+    height: 180px;
+    border-width: 2px 0px 2px 0;
+    border-style: solid;
+    border-color: #EBEFF0;
+    margin-left: -8px;
+}
+
+#stockName{
+    font-size: 27px;
+    font-weight: bold;
+    color: #333333;
+}
+
+#stockAddButton{
+    background-color: #3A6098;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+#stockPrice{
+    font-size:30px;
+}
+
+.addPrice {
+    font-size: 20px;
+}
+
+.stockData{
+    font-size: 14px;
+    color: gray;
+}
+
+.infoData ul{
+    float: left;
+}
+
+.infoData ul li{
+    display: inline-block;
+    float: left;
+    width: 130px;
+    line-height: 30px;
+}
+
+#kLine{
+    padding-top: 10px;
+    background-color: white;
+    height: 650px;
+}
+
+#kLine ul{
+    padding-left: 20px;
+    margin-bottom: 10px;
+    padding-bottom: 0;
+}
+
+
+#kLine ul li{
+    display: inline-block;
+    margin-right: 5px;
+    margin-bottom: -10px;
+}
+
+#kLine ul li button{
+    background-color: transparent;
+    padding: 3px 10px;
+    text-decoration: none;
+    font-size:17px;
+    color: #000;
+    margin-bottom: -10px;
+    outline: none;
+}
+
+.blueBackground{
+    border-bottom: 2px solid #407Fce;
+}
+
+#score{
+    font-size:25px;
+    color: #C23531;
+}
+
+.companyIntro{
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.whiteBackground{
+    background-color: white;
+}
+
+#deleteBrowseButton{
+    outline: none;
+    background-color: var(--loginColor);
+    color: white;
+    padding:5px 5px;
+    border-radius: 5px;
+}
+
+#deleteBrowseButton:hover{
+    background-color: #1F4374;
+}
+
+.browseTable thead{
+    border:  0px solid transparent !important;
+}
+
+.browseTable tbody{
+    border:  0px solid transparent !important;
+}
+
+.browseTable tbody tr{
+    border:  0px solid transparent !important;
+}
+
+#buyButton{
+    outline:none;
+    /*background-color:#D47859;*/
+    background-color: #D75442;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 5px;
+}
+
+.addPriceButton{
+    margin-left: 10px;
+    height: 40px;
+    width: 40px;
+    outline:none;
+    background-color: #EBF5FF;
+    border: 1.5px solid #A8d2ff;
+    border-radius: 2px;
+    text-align: center;
+}
+
+.buy-page-holder{
+    position: absolute;
+    z-index: 100;
+    /*text-align: center;*/
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    padding: 10px;
+    background-color: #F8F8F8;
+    box-shadow: 0 0 10px #666666;
+}
+
+/*上三角*/
+.top-triangle{
+    position:absolute;
+    top:-10px;
+    left:20px;
+    width:0;
+    height:0;
+    border-left:15px solid transparent;
+    border-right:15px solid transparent;
+    border-bottom:15px solid #F8F8F8;
+}
+
+.disappear{
+    display: none;
+}
+
+#buyConfirmButton{
+    outline:none;
+    background-color: #D75442;
+    color: white;
+    padding: 3px 20px;
+    border-radius: 5px;
+ }
+

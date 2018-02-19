@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-28 13:18:58 by Hibernate Tools 5.2.1.Final -->
+<hibernate-mapping>
+    <class name="PO.StockData" table="stock_data" catalog="proquant" optimistic-lock="version">
+        <composite-id name="id" class="PO.StockDataId">
+            <key-property name="code" type="string">
+                <column name="code" length="45" />
+            </key-property>
+            <key-property name="date" type="date">
+                <column name="date" length="10" />
+            </key-property>
+        </composite-id>
+        <property name="open" type="java.lang.Double">
+            <column name="open" precision="22" scale="0" />
+        </property>
+        <property name="high" type="java.lang.Double">
+            <column name="high" precision="22" scale="0" />
+        </property>
+        <property name="low" type="java.lang.Double">
+            <column name="low" precision="22" scale="0" />
+        </property>
+        <property name="close" type="java.lang.Double">
+            <column name="close" precision="22" scale="0" />
+        </property>
+        <property name="netChange" type="java.lang.Double">
+            <column name="netChange" precision="22" scale="0" />
+        </property>
+        <property name="chg" type="java.lang.Double">
+            <column name="chg" precision="22" scale="0" />
+        </property>
+        <property name="volume" type="java.lang.Double">
+            <column name="volume" precision="22" scale="0" />
+        </property>
+        <property name="turnover" type="java.lang.Double">
+            <column name="turnover" precision="22" scale="0">
+                <comment>&#181;&#165;&#206;&#187;&#163;&#186;&#205;&#242;&#212;&#170;</comment>
+            </column>
+        </property>
+        <property name="amplitude" type="java.lang.Double">
+            <column name="amplitude" precision="22" scale="0" />
+        </property>
+        <property name="turnoverRatio" type="java.lang.Double">
+            <column name="turnoverRatio" precision="22" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

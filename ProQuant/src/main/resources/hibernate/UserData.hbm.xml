@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-6-3 2:17:17 by Hibernate Tools 5.2.1.Final -->
+<hibernate-mapping>
+    <class name="PO.user.UserData" table="user_data" catalog="proquant" optimistic-lock="version">
+        <id name="username" type="string">
+            <column name="username" length="16" />
+            <generator class="assigned" />
+        </id>
+        <property name="password" type="string">
+            <column name="password" length="100" not-null="true" />
+        </property>
+        <property name="avatar" type="binary">
+            <column name="avatar" />
+        </property>
+    </class>
+</hibernate-mapping>

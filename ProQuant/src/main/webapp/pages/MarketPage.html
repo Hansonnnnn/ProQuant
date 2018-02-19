@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>市场行情</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link href="../css/myCSS/MarketPageCSS.css" rel="stylesheet">
+    <link href="../css/myCSS/MarketPageChartsCSS.css" rel="stylesheet">
+    <link href="../css/myCSS/nav_footerCSS.css" rel="stylesheet">
+    <script type="text/javascript" src="../js/echarts.min.js"></script>
+    <script src="../js/jquery-3.2.1.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/myJS/MarketJS.js" type="text/javascript"></script>
+    <script src="../js/globalVariables.js" type="text/javascript"></script>
+</head>
+<body>
+    <!--导航栏start-->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">ProQuant</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">首页</a></li>
+                <li><a href="#">大盘</a></li>
+                <li><a href="#">个股</a></li>
+                <li><a href="#">策略</a></li>
+                <li><a href="#">论坛</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li id="searchText"><input id="searchInput" type="text" placeholder="搜索"><i class="fa fa-search" aria-hidden="true"></i></li>
+                <li class="loginButtonHolder"><button id="loginButton"><i class="fa fa-user-circle" aria-hidden="true">未登录</i></button></li>
+                <li><img src="../images/skin.png"></li>
+            </ul>
+        </div>
+    </nav>
+    <!--导航栏end-->
+    <div class="m-container">
+        <div class="m-box">
+            <div class="m-head">
+                <h2>市场行情</h2>
+            </div>
+            <div class="m-body">
+                <div class="market-tab">
+                    <span class="cur" id="zhangdie-tab">涨跌分布</span>
+                    <span id="zhangdieting-tab">涨跌停</span>
+                    <input type="date" class="my-date-picker">
+                </div>
+                <div class=" hcharts clearfix">
+                    <div class="hcharts-left tab-hv-box">
+                        <div class="hcharts-cont tab-hv-cont" id="top-image-holder">
+                            <!--<div class="hcharts-legend"></div>-->
+                            <div class="" id="zdfb">
+                                <p>这里放置涨跌分布的直方图</p>
+                            </div>
+                            <div class="disappear" id="zdt">
+                                <p>这里放置涨跌停的折线图</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hcharts-right">
+                        <h4>热门股票</h4>
+                        <div>
+                            <table class="table-striped table-hover">
+                                <thead>
+                                <tr>
+                                    <th style="width: 38px;">序号</th>
+                                    <th style="width: 70px;">股票ID</th>
+                                    <th style="width: 80px;">股票名称</th>
+                                    <th style="width: 80px;">今日涨幅</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <!--标签里面的链接都没有设置*************************************************-->
+                                <tr>
+                                    <td class="num">1</td>
+                                    <td>
+                                        <a href="#">000000</a>
+                                    </td>
+                                    <td>
+                                        <a href="#">阿里巴巴</a>
+                                    </td>
+                                    <td>5%</td>
+                                </tr>
+                                <tr>
+                                    <td class="num">1</td>
+                                    <td>
+                                        <a href="#">000000</a>
+                                    </td>
+                                    <td>
+                                        <a href="#">阿里巴巴</a>
+                                    </td>
+                                    <td>5%</td>
+                                </tr>
+                                <tr>
+                                    <td class="num">1</td>
+                                    <td>
+                                        <a href="#">000000</a>
+                                    </td>
+                                    <td>
+                                        <a href="#">阿里巴巴</a>
+                                    </td>
+                                    <td>5%</td>
+                                </tr>
+                                <tr>
+                                    <td class="num">1</td>
+                                    <td>
+                                        <a href="#">000000</a>
+                                    </td>
+                                    <td>
+                                        <a href="#">阿里巴巴</a>
+                                    </td>
+                                    <td>5%</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="mt30 clearfix">
+
+                    <div class="flash-single flash-small flash-sec1">
+                        <div>
+                            <strong class="m-off">沪深300</strong>
+                            <span class="link-red"></span>
+                            <span class="red"></span>
+                            <span class="red"></span>
+                        </div>
+                        <!--*********************************************下面的div是用来存放echarts的*********************************************-->
+                        <div class="price-box" id="hu" style="height: 180px;"></div>
+                    </div>
+                    <div class="flash-single flash-small flash-sec2">
+                        <div>
+                            <strong class="m-off">创业板</strong>
+                            <span class="link-red"></span>
+                            <span class="red"></span>
+                            <span class="red"></span>
+                        </div>
+                        <!--*********************************************下面的div是用来存放echarts的*********************************************-->
+                        <div class="price-box" id="chuang" style="height: 180px;"></div>
+                    </div>
+                    <div class="flash-single flash-small">
+                        <div>
+                            <strong class="m-off">中小板</strong>
+                            <span class="link-red"></span>
+                            <span class="red"></span>
+                            <span class="red"></span>
+                        </div>
+                        <!--*********************************************下面的div是用来存放echarts的*********************************************-->
+                        <div class="price-box" id="zhong" style="height: 180px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="m-box">
+            <div class="m-head">
+                <h2>个股行情</h2>
+            </div>
+            <div class="m-body m-pager-box">
+                <div class="table-tab">
+                    <h4 class="cur" id="allStocksTab">
+                    <a href="javascript: void(0)">全部股票</a>
+                    </h4>
+                    <h4 id="hushen300Tab">
+                        <a href="javascript: void(0)">沪深300</a>
+                    </h4>
+                    <h4 id="chuangyebanTab">
+                        <a href="javascript: void(0)">创业板</a>
+                    </h4>
+                    <h4 id="zhongxiaobanTab">
+                        <a href="javascript: void(0)">中小板</a>
+                    </h4>
+                </div>
+                <div id="maincont" data-fixedthead="true">
+                    <div class="table-holder">
+                        <table class="m-table table-striped table-hover"  id="allStocksTable">
+                            <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>股票ID</th>
+                                <th>股票名称</th>
+                                <th>开盘价</th>
+                                <th>昨日收盘价</th>
+                                <th>最高价</th>
+                                <th>最低价</th>
+                                <th>涨跌幅(%)</th>
+                                <th>成交量</th>
+                                <th>流通市值</th>
+                                <th>市盈率</th>
+                                <th>市净率</th>
+                                <th>加入自选</th>
+                            </tr>
+                            </thead>
+                            <!--添加表格内容时，注意添加每个表格元素的标签不相同，有的是a，有的是td**********************************-->
+                            <tbody>
+
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000000</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000001</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000002</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000003</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000004</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000005</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000006</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000000</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000000</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000000</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000000</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000000</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000000</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000000</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000000</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000000</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000000</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000000</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000000</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000000</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000000</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                        <table id="hushen300Table" class="disappear"></table>
+                        <table id="chuangyebanTable" class="disappear"></table>
+                        <table id="zhongxiaobanTable" class="disappear"></table>
+                    </div>
+                    <div class="m-pager m-page">
+                        <!--1.a标签需要实时地更换，最一开始是没有首页和上一页的，但是一旦不处于首页，就要出现这两个标签，
+                            2.合适出现6、7、8、9-->
+                        <a href="javascript:void(0);" class="changePage cur">1</a>
+                        <a href="javascript:void(0);" class="changePage">2</a>
+                        <a href="javascript:void(0);" class="changePage">3</a>
+                        <a href="javascript:void(0);" class="changePage">4</a>
+                        <a href="javascript:void(0);" class="changePage">5</a>
+                        <a href="javascript:void(0);" class="changePage">下一页</a>
+                        <a href="javascript:void(0);" class="changePage">尾页</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="m-box">
+            <div class="m-head">
+                <h2>技术选股</h2>
+            </div>
+            <div class="m-body m-pager-box">
+                <div class="table-tab">
+                    <h4 class="cur" id="">
+                        <a href="javascript: void(0)">创新高</a>
+                    </h4>
+                    <h4 id="">
+                        <a href="javascript: void(0)">创新低</a>
+                    </h4>
+                    <h4 id="">
+                        <a href="javascript: void(0)">连续上涨</a>
+                    </h4>
+                    <h4 id="">
+                        <a href="javascript: void(0)">连续下跌</a>
+                    </h4>
+                    <h4 id="">
+                        <a href="javascript: void(0)">持续增量</a>
+                    </h4>
+                    <h4 id="">
+                        <a href="javascript: void(0)">持续缩量</a>
+                    </h4>
+                    <h4 id="">
+                        <a href="javascript: void(0)">向上突破</a>
+                    </h4>
+                    <h4 id="">
+                        <a href="javascript: void(0)">向下突破</a>
+                    </h4>
+                    <h4 id="">
+                        <a href="javascript: void(0)">量价齐升</a>
+                    </h4>
+                    <h4 id="">
+                        <a href="javascript: void(0)">量价齐跌</a>
+                    </h4>
+
+                </div>
+                <div id="maincontTwo" data-fixedthead="true">
+                    <div class="table-holder">
+                        <table class="m-table table-striped table-hover"  id="allStocksTableTwo">
+                            <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>股票ID</th>
+                                <th>股票名称</th>
+                                <th>开盘价</th>
+                                <th>昨日收盘价</th>
+                                <th>最高价</th>
+                                <th>最低价</th>
+                                <th>涨跌幅(%)</th>
+                                <th>成交量</th>
+                                <th>流通市值</th>
+                                <th>市盈率</th>
+                                <th>市净率</th>
+                                <th>加入自选</th>
+                            </tr>
+                            </thead>
+                            <!--添加表格内容时，注意添加每个表格元素的标签不相同，有的是a，有的是td**********************************-->
+                            <tbody>
+
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000000</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000001</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000002</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000003</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000004</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000005</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000006</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000000</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000000</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000000</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000000</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000000</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000000</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000000</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000000</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000000</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000000</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000000</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000000</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000000</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr onmousedown="mouseDown($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseover="mouseOver($(this),$(this).children().eq(1).children().eq(0).text())"
+                                onmouseup="mouseUp()">
+                                <td>1</td>
+                                <td>
+                                    <a href="#">000000</a>
+                                </td>
+                                <td>
+                                    <a href="#">测试股</a></td>
+                                <td>开盘价</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>--</td>
+                                <td>
+                                    <a href="javascript:void(0);" title="addStocks" class="j_addstock">
+                                        <img src="../images/addstock.png">
+                                    </a>
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                        <table id="" class="disappear"></table>
+                        <table id="" class="disappear"></table>
+                        <table id="" class="disappear"></table>
+                    </div>
+                    <div class="m-pager m-page">
+                        <!--1.a标签需要实时地更换，最一开始是没有首页和上一页的，但是一旦不处于首页，就要出现这两个标签，
+                            2.合适出现6、7、8、9-->
+                        <a href="javascript:void(0);" class="changePage cur">1</a>
+                        <a href="javascript:void(0);" class="changePage">2</a>
+                        <a href="javascript:void(0);" class="changePage">3</a>
+                        <a href="javascript:void(0);" class="changePage">4</a>
+                        <a href="javascript:void(0);" class="changePage">5</a>
+                        <a href="javascript:void(0);" class="changePage">下一页</a>
+                        <a href="javascript:void(0);" class="changePage">尾页</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--页脚start-->
+    <div class="footer  container">
+        <div class="row">
+            <div class="left-footer col-sm-9">
+                <div>
+                    <h2>关于ProQuant</h2>
+                    <br>
+                    <p>ProQuant是一款基于提供股票市场情况展示，个股信息展示，股票各项指标预测功能于一体的多功能股票查询、
+                        <br>分析的软件。</p>
+                </div>
+            </div>
+            <div class="right-footer col-sm-3">
+                <div>
+                    <h2>关于我们</h2>
+                    <br>
+                    <p></p>
+                </div>
+                <div>
+                    <a href=""><img src="../images/weibo.png" alt="微博"></a>
+                    <a href=""><img src="../images/weixin.png" alt="微信"></a>
+                    <a href=""><img src="../images/qq.png" alt="QQ"></a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--页脚end-->
+    <div id="attentionDialog" class="fadeIn">
+        <h2>提示</h2>
+        <h4>您确认删除已选中的多只股票吗？</h4>
+        <div style="width: 50%;margin: 5px auto;">
+            <input type="button" value="确认" id="confirm-button" >
+            <input type="button" value="取消" style="background-color: #8c8c8c" id="cancel-button">
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript" src="../charts/areaChart.js"></script>
+<script type="text/javascript" src="../charts/marketAreaChart.js"></script>
+</html>

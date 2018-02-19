@@ -1,0 +1,104 @@
+/*使用方法：
+主要使用左右上下四种小三角
+<div id="entry"  class="entry">
+    <div class="entry-trangle-top"><!--本Div只来实现三角形，无其他作用--></div>
+    <div>Content....</div>
+</div>
+然后使用绝对定位去确定提示框的位置，如果发现小三角的位置不理想，修改其对应参数即可*/
+
+
+*{
+    margin: 0;
+    padding: 0;
+}
+.entry{
+    position: absolute;
+    /*margin-left: 20px;*/
+    /*margin-top:20px;*/
+    /*width:200px;*/
+    width: auto;
+    /*height: 50px;*/
+    height:auto;
+    background:#fff;
+    /*padding:10px;*/
+    /*设置圆角*/
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    padding: 10px;
+}
+
+/*左三角*/
+.entry-trangle-left{
+    position:absolute;
+    /*bottom:15px;*/
+    top: 15px;
+    left:-10px;
+    width:0;
+    height:0;
+    border-top:15px solid transparent;
+    border-bottom:15px solid transparent;
+    border-right:15px solid #fff;
+}
+/*右三角*/
+.entry-trangle-right{
+    position:absolute;
+    top:15px;
+    right:-10px;
+    width:0;
+    height:0;
+    border-top:15px solid transparent;
+    border-bottom:15px solid transparent;
+    border-left:15px solid #fff;
+}
+/*上三角*/
+.entry-trangle-top{
+    position:absolute;
+    top:-10px;
+    left:20px;
+    width:0;
+    height:0;
+    border-left:15px solid transparent;
+    border-right:15px solid transparent;
+    border-bottom:15px solid #fff;
+}
+/*下三角*/
+.entry-trangle-bottom{
+    position:absolute;
+    bottom:-10px;
+    left:20px;
+    width:0;
+    height:0;
+    border-left:15px solid transparent;
+    border-right:15px solid transparent;
+    border-top:15px solid #fff;
+}
+#entry{
+    display: none;
+}
+
+#holder{
+    position: absolute;
+    z-index: 100;
+    /*text-align: center;*/
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    background-color: #F8F8F8;
+    box-shadow: 0 0 10px #666666;
+}
+
+.displayNone{
+    display: none;
+}
+
+#headContainer{
+    position: absolute;
+    z-index: 100;
+    /*text-align: center;*/
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    background-color: #F8F8F8;
+    box-shadow: 0 0 10px #666666;
+}

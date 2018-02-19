@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-6-10 0:50:47 by Hibernate Tools 5.2.1.Final -->
+<hibernate-mapping>
+    <class name="PO.user.UserStrategyRecord" table="user_strategy_record" catalog="proquant" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="username" type="string">
+            <column name="username" length="16" />
+        </property>
+        <property name="strategyAlgorithm" type="java.lang.Byte">
+            <column name="strategy_algorithm">
+                <comment>/** * 0 BP&#201;&#241;&#190;&#173;&#205;&#248;&#194;&#231;&#178;&#223;&#194;&#212; * 1
+                &#190;&#249;&#214;&#181;&#187;&#216;&#185;&#233;&#178;&#223;&#194;&#212; * 2 &#182;&#175;&#193;&#191;&#178;&#223;&#194;&#212; */</comment>
+            </column>
+        </property>
+        <property name="startDate" type="timestamp">
+            <column name="start_date" length="19" />
+        </property>
+        <property name="endDate" type="timestamp">
+            <column name="end_date" length="19" />
+        </property>
+        <property name="stockPlate" type="java.lang.Byte">
+            <column name="stock_plate">
+                <comment>/** * 0 1 2 3 * SME,CHINEXT,CSI300,POOLOFUSER; */</comment>
+            </column>
+        </property>
+        <property name="baseRule" type="java.lang.Byte">
+            <column name="base_rule">
+                <comment>/** * 0 1 2 3 * SME,CHINEXT,CSI300,POOLOFUSER; */</comment>
+            </column>
+        </property>
+        <property name="holdingPeriod" type="java.lang.Integer">
+            <column name="holding_period" />
+        </property>
+         <property name="formativePeriod" type="java.lang.Integer">
+            <column name="formative_period" />
+        </property>
+        <property name="maxHoldStocksNum" type="java.lang.Integer">
+            <column name="max_hold_stocks_num" />
+        </property>
+    </class>
+</hibernate-mapping>

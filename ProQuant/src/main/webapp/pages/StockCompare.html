@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>股票对比</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/stockCompare.css">
+    <script src="../js/jquery-3.2.1.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/echarts.min.js"></script>
+</head>
+<body>
+<!--导航栏start-->
+<nav class="navbar navbar-default navbar-fixed-top" style="height: 51px">
+    <div class="container">
+        <div class="navbar-header">
+            <div>
+                <a class="navbar-brand" href="#">
+                    <svg style="display: inline-block;" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    x="0px" y="0px" width="25px" viewBox="0 0 48 34" enable-background="new 0 0 48 34" xml:space="preserve">
+                    <defs>
+                        <clipPath id="mask">
+                        <polygon transform="rotate(180 18 11)" points="10,15.2 13.5,10.9 23.2,20.8 35.7,7.9 35.7,0 10,0 "/>
+                        </clipPath>
+                     </defs>
+                    <g transform="rotate(180 18 11)" clip-path="url(#mask)">
+                      <rect x="0" y="0" width="7" height="14" fill="#f2f2f2">
+                        <animateTransform  attributeType="xml"
+                          attributeName="transform" type="scale"
+                          values="1,1; 1,1.5; 1,1"
+                          begin="0.4s" dur="0.8s" repeatCount="indefinite" />
+                      </rect>
+                      <rect x="9" y="0" width="7" height="19" fill="#f2f2f2">
+                        <animateTransform  attributeType="xml"
+                          attributeName="transform" type="scale"
+                          values="1,0.2; 1,1.2; 1,0.2"
+                          begin="0.3s" dur="0.8s" repeatCount="indefinite" />
+                      </rect>
+                      <rect x="18" y="0" width="8" height="14" fill="#f2f2f2">
+                        <animateTransform  attributeType="xml"
+                          attributeName="transform" type="scale"
+                          values="1,0.2; 1,1.5; 1,0.2"
+                          begin="0s" dur="0.8s" repeatCount="indefinite" />
+                      </rect>
+                    </g>
+
+                    <polygon fill="#E67E25" points="38.6,2 41.4,4.2 36.1,10.2 29.5,17 26.8,19.8 23.3,23.3 19.9,19.8 17.1,17 13.7,13.5 10.2,17.7
+                    0,30.2 10,20.8 10,34 16.9,34 16.9,22.2 19.7,25.1 19.7,34 26.7,34 26.7,25.3 29.5,22.5 29.5,34 36.4,34 36.4,15.5 44.1,7.1 46.4,9.7 48,0   "/>
+                </svg>
+                    <div style="display: inline-block;font-size: 25px">ProQuant</div>
+                </a>
+            </div>
+        </div>
+        <ul id="navigation" class="nav navbar-nav">
+            <li><a href="#">首页</a></li>
+            <li class="active"><a href="#">大盘</a></li>
+            <li><a href="#">个股</a></li>
+            <li><a href="#">策略</a></li>
+            <li><a href="#">论坛</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li id="searchText">
+                <input id="searchInput" type="text" placeholder="搜索">
+                <button style="background-color: transparent;color: #1F4374;"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </li>
+            <li>
+                <button id="loginButton"><i class="fa fa-user-circle" aria-hidden="true"></i>未登录</button>
+            </li>
+            <li>
+                <div class="dropdown" id="skin">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
+                            style="background-color: transparent;border: none">
+                        <img src="../images/skin.png">
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li>
+                            <button style="background-color: #292C31"><span>酷炫黑<i class="fa fa-check-circle" style="color: #B82525" aria-hidden="true"></i></span>
+                            </button>
+                        </li>
+                        <li>
+                            <button style="background-color: #90C5E7"><span>淡蓝</span></button>
+                        </li>
+                        <li>
+                            <button style="background-color: #601F00"><span>棕色</span></button>
+                        </li>
+                        <li>
+                            <button style="background-color: #48A564"><span>清新绿</span></button>
+                        </li>
+                        <li>
+                            <button style="background-color: #ECC180"><span>土豪金</span></button>
+                        </li>
+                        <li>
+                            <button style="background-color: #EF99BC"><span>可爱粉</span></button>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!--导航栏end-->
+
+<!--股票对比主要内容start-->
+<div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8">
+                <!--<div class="headLabel">股票对比</div>-->
+                <div>
+                    <div class="col-sm-4" style="padding-left:0;padding-right: 10px">
+                        <div class="headLabel">选择对比股票</div>
+                        <!--添加对比股票-->
+                        <div style="background-color: white;padding: 15px;margin-bottom: 10px">
+                            <div class="centerAlignment">
+                                <label>添加对比：</label>
+                                <input type="text" id="searchTextField" placeholder="请输入股票名称或代码">
+                            </div>
+                            <ul id="stockContainer">
+                                <!--<li class="stockCard">-->
+                                    <!--<span class="stockCardName">上海九百</span>-->
+                                    <!--<button class="stockCardDelete"><i class="fa fa-times-circle" aria-hidden="true"></i></button>-->
+                                <!--</li>-->
+                                <!--<li class="stockCard">-->
+                                    <!--<span class="stockCardName">包钢股份</span>-->
+                                    <!--<button class="stockCardDelete"><i class="fa fa-times-circle" aria-hidden="true"></i></button>-->
+                                <!--</li>-->
+                                <!--<li class="stockCard">-->
+                                    <!--<span class="stockCardName">工商银行</span>-->
+                                    <!--<button class="stockCardDelete"><i class="fa fa-times-circle" aria-hidden="true"></i></button>-->
+                                <!--</li>-->
+                                <!--<li class="stockCard">-->
+                                    <!--<span class="stockCardName">奥翔药业</span>-->
+                                    <!--<button class="stockCardDelete"><i class="fa fa-times-circle" aria-hidden="true"></i></button>-->
+                                <!--</li>-->
+                                <!--<li class="stockCard">-->
+                                    <!--<span class="stockCardName">中兴商业</span>-->
+                                    <!--<button class="stockCardDelete"><i class="fa fa-times-circle" aria-hidden="true"></i></button>-->
+                                <!--</li>-->
+                            </ul>
+
+                            <div class="centerAlignment" style="margin: 10px 0">
+                                <p class="yellow_word">提示：最多对比五只股票</p>
+                            </div>
+                            <div style="padding-left:8%; ">
+                                <button id="deleteAllButton">清空</button>
+                                <button id="compareButton">开始对比</button>
+                            </div>
+                        </div>
+                        <div style="background-color: white;padding: 15px">
+                            <div>
+                                <button class="hotStockButton hotStockBottomBorder" id="hotCompareStockButton">热门股票</button>
+                                <button class="hotStockButton" id="browseCompareStockButton">最近访问</button>
+                            </div>
+                            <div id="hotCompareStock">
+                                <table class="table">
+                                    <tbody>
+                                    <tr>
+                                        <td><a>华联超综</a></td>
+                                        <td class="redFont">6.55</td>
+                                        <td class="redFont">10.08%</td>
+                                        <td><button class="addCompareStockButton"><i class="fa fa-plus" aria-hidden="true"></i>对比</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a>上海九百</a></td>
+                                        <td class="redFont">12.60</td>
+                                        <td class="redFont">10.04%</td>
+                                        <td><button class="addCompareStockButton"><i class="fa fa-plus" aria-hidden="true"></i>对比</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a>青海华鼎</a></td>
+                                        <td class="redFont">9.66</td>
+                                        <td class="redFont">10.02%</td>
+                                        <td><button class="addCompareStockButton"><i class="fa fa-plus" aria-hidden="true"></i>对比</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a>晶瑞股份</a></td>
+                                        <td class="greenFont">14.60</td>
+                                        <td class="greenFont">10.02%</td>
+                                        <td><button class="addCompareStockButton"><i class="fa fa-plus" aria-hidden="true"></i>对比</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a>展鹏科技</a></td>
+                                        <td class="greenFont">26.04</td>
+                                        <td class="greenFont">10.01%</td>
+                                        <td><button class="addCompareStockButton"><i class="fa fa-plus" aria-hidden="true"></i>对比</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a>杭州解百</a></td>
+                                        <td class="redFont">9.34</td>
+                                        <td class="redFont">10.01%</td>
+                                        <td><button class="addCompareStockButton"><i class="fa fa-plus" aria-hidden="true"></i>对比</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a>顶点软件</a></td>
+                                        <td class="greenFont">44.18</td>
+                                        <td class="greenFont">10.01%</td>
+                                        <td><button class="addCompareStockButton"><i class="fa fa-plus" aria-hidden="true"></i>对比</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a>正海生物</a></td>
+                                        <td class="greenFont">39.81</td>
+                                        <td class="greenFont">10.00%</td>
+                                        <td><button class="addCompareStockButton"><i class="fa fa-plus" aria-hidden="true"></i>对比</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a>中兴商业</a></td>
+                                        <td class="redFont">11.90</td>
+                                        <td class="redFont">5.40%</td>
+                                        <td><button class="addCompareStockButton"><i class="fa fa-plus" aria-hidden="true"></i>对比</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a>徐家汇</a></td>
+                                        <td class="redFont">13.06</td>
+                                        <td class="redFont">5.15%</td>
+                                        <td><button class="addCompareStockButton"><i class="fa fa-plus" aria-hidden="true"></i>对比</button></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="displayNone" id="hotBrowseStock">
+                                <table class="table">
+                                    <tbody>
+                                    <tr>
+                                        <td><a>杭州园林</a></td>
+                                        <td class="redFont">61.60</td>
+                                        <td class="redFont">10.00%</td>
+                                        <td><button class="addCompareStockButton"><i class="fa fa-plus" aria-hidden="true"></i>对比</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a>奥翔药业</a></td>
+                                        <td class="redFont">26.18</td>
+                                        <td class="redFont">10.00%</td>
+                                        <td><button class="addCompareStockButton"><i class="fa fa-plus" aria-hidden="true"></i>对比</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a>超频三</a></td>
+                                        <td class="redFont">35.18</td>
+                                        <td class="redFont">1.85%</td>
+                                        <td><button class="addCompareStockButton"><i class="fa fa-plus" aria-hidden="true"></i>对比</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a>展鹏科技</a></td>
+                                        <td class="greenFont">24.81</td>
+                                        <td class="greenFont">4.72%</td>
+                                        <td><button class="addCompareStockButton"><i class="fa fa-plus" aria-hidden="true"></i>对比</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a>寿仙谷</a></td>
+                                        <td class="greenFont">42.56</td>
+                                        <td class="greenFont">5.55%</td>
+                                        <td><button class="addCompareStockButton"><i class="fa fa-plus" aria-hidden="true"></i>对比</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a>金石资源</a></td>
+                                        <td class="redFont">22.20</td>
+                                        <td class="redFont">2.33%</td>
+                                        <td><button class="addCompareStockButton"><i class="fa fa-plus" aria-hidden="true"></i>对比</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a>万通智控</a></td>
+                                        <td class="greenFont">18.01</td>
+                                        <td class="greenFont">9.99%</td>
+                                        <td><button class="addCompareStockButton"><i class="fa fa-plus" aria-hidden="true"></i>对比</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a>伟隆股份</a></td>
+                                        <td class="greenFont">46.66</td>
+                                        <td class="greenFont">4.39%</td>
+                                        <td><button class="addCompareStockButton"><i class="fa fa-plus" aria-hidden="true"></i>对比</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a>森特股份</a></td>
+                                        <td class="redFont">27.15</td>
+                                        <td class="redFont">4.06%</td>
+                                        <td><button class="addCompareStockButton"><i class="fa fa-plus" aria-hidden="true"></i>对比</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td><a>金溢科技</a></td>
+                                        <td class="redFont">52.76</td>
+                                        <td class="redFont">1.66%</td>
+                                        <td><button class="addCompareStockButton"><i class="fa fa-plus" aria-hidden="true"></i>对比</button></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="headLabel">走势对比<span style="font-size: 15px;font-weight: 500">  (请在左侧添加对比股票)</span></div>
+                        <div class="whiteBackground" style="padding-top: 15px;margin-bottom: 10px">
+                            <div style="margin-bottom: 5px;margin-left: 15px">
+                                <ul>
+                                    <li style="display: inline-block"><button class="chartChooseButton hotStockBottomBorder">分时图</button></li>
+                                    <li style="display: inline-block"><button class="chartChooseButton">涨跌幅</button></li>
+                                    <li style="display: inline-block"><button class="chartChooseButton">收盘价</button></li>
+                                </ul>
+                            </div>
+                            <div id="compareChartContainer" style="height: 480px"></div>
+                        </div>
+
+                        <div class="headLabel" style="margin-top: 10px">基本指标对比</div>
+                        <div class="whiteBackground" style="padding: 15px;margin-bottom: 15px">
+                            <table class="table table-bordered table-condensed table-striped">
+                                <thead>
+                                    <tr id="compareTableHead">
+                                        <th style="width: 16%">对比项</th>
+                                        <th style="width: 16%">--</th>
+                                        <th style="width: 16%">--</th>
+                                        <th style="width: 16%">--</th>
+                                        <th style="width: 16%">--</th>
+                                        <th style="width: 16%">--</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="compareIndex">一周涨跌</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="compareIndex">一月涨跌</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="compareIndex">三月涨跌</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="compareIndex">半年涨跌</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="compareIndex">一年涨跌</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="compareIndex">市盈率</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="compareIndex">市净率</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="compareIndex">市现率</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="compareIndex">市销率</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="compareIndex">一周涨跌</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="compareIndex">每股收益</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="compareIndex">销售净利润</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="compareIndex">一周涨跌</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="compareIndex">资产收益率</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="compareIndex">资产负债率</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="compareIndex">流动比率</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="compareIndex">主营收入</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="compareIndex">净利润</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="compareIndex">总资产</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                        <td>--</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+    </div>
+</div>
+<!--股票对比主要内容end-->
+
+<!--登录弹出框start-->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="model-content">
+            <div class="cont_principal">
+                <div class="cont_centrar">
+                    <div class="cont_login">
+                        <form action="">
+                            <div class="cont_tabs_login">
+                                <ul class='ul_tabs'>
+                                    <li class="active"><a href="#" onclick="sign_in()">SIGN IN</a>
+                                        <span class="linea_bajo_nom"></span>
+                                    </li>
+                                    <li><a href="#up" onclick="sign_up()">SIGN UP</a><span class="linea_bajo_nom"></span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="cont_text_inputs">
+                                <input type="text" class="input_form_sign " placeholder="NAME" name="name_us" />
+                                <input type="text" class="input_form_sign d_block active_inp" placeholder="EMAIL" name="emauil_us" />
+                                <input type="password" class="input_form_sign d_block  active_inp" placeholder="PASSWORD" name="pass_us" />
+                                <input type="password" class="input_form_sign" placeholder="CONFIRM PASSWORD" name="conf_pass_us" />
+                                <a href="#" class="link_forgot_pass d_block" >Forgot Password ?</a>
+                                <div class="terms_and_cons d_none">
+                                    <div><input type="checkbox" name="terms_and_cons" /> <label>Accept  Terms and Conditions.</label></div>
+                                </div>
+                            </div>
+                            <div class="cont_btn">
+                                <button class="btn_sign">SIGN IN</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--登录弹出框end-->
+
+<!--滑出提示框-->
+<div id="toaster_close">
+    <div id="toaster">
+        <div id="pic_div" class="green_pic"></div>
+        <div id="remind" class="green_word">提示消息</div>
+    </div>
+</div>
+
+<script src="../charts/lineChart.js"></script>
+<script src="../js/stockCompare.js"></script>
+</body>
+</html>

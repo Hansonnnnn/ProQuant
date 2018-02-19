@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-5-25 12:54:39 by Hibernate Tools 4.0.1.Final -->
+<hibernate-mapping>
+    <class name="PO.InfoData" table="info_data" catalog="proquant">
+        <id name="id" type="long">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="code" type="string">
+            <column name="code" length="45" />
+        </property>
+        <property name="name" type="string">
+            <column name="name" length="45" />
+        </property>
+        <property name="CName" type="string">
+            <column name="c_name" length="45" />
+        </property>
+        <property name="board" type="java.lang.Byte">
+            <column name="board">
+                <comment>0 &#187;&#166;&#201;&#238; 1 &#214;&#208;&#208;&#161;&#176;&#229; 2 &#180;&#180;&#210;&#181;&#176;&#229; 3 &#187;&#166;&#201;&#238;300</comment>
+            </column>
+        </property>
+        <property name="cpName" type="string">
+            <column name="cp_name" length="45" />
+        </property>
+        <property name="cpProvince" type="string">
+            <column name="cp_province" length="10" />
+        </property>
+        <property name="cpEnName" type="string">
+            <column name="cp_en_name" length="45" />
+        </property>
+        <property name="cpWebsite" type="string">
+            <column name="cp_website" length="45" />
+        </property>
+        <property name="cpBusiness" type="string">
+            <column name="cp_business" length="100" />
+        </property>
+        <property name="cpAddress" type="string">
+            <column name="cp_address" length="45" />
+        </property>
+        <property name="cpInfo" type="string">
+            <column name="cp_info" length="200" />
+        </property>
+    </class>
+</hibernate-mapping>

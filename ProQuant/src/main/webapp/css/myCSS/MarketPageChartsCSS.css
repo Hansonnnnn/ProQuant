@@ -1,0 +1,234 @@
+@charset "gbk";
+.hcharts-list .item h3, .hcharts-list .item .arr-rise, .hcharts-list .item .arr-fall{
+    background: url(http://i.thsi.cn/images/q/hssc-icons.jpg) no-repeat;
+}
+
+.hcharts-list .cur h3, .hcharts-list .cur .arr-rise, .hcharts-list .cur .arr-fall {
+    background: url(http://i.thsi.cn/images/q/hssc-icons2.jpg) no-repeat;
+}
+/*图表三个标签页，及日期选择器开始*/
+.market-tab span{
+    display: inline-block;
+    width: 150px;
+    height: 30px;
+    background-color: #f8f8f8;
+    padding-top: 3px;
+    text-align: center;
+    color: #666;
+    font-weight: 500;
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+.market-tab span.cur{
+    background-color: white;
+    border-left: 6px solid #d75442;
+}
+
+.market-tab input{
+    display: inline-block;
+    width: 200px;
+    height: 25px;
+    /*position: absolute;*/
+    /*right: 340px;*/
+    /*right: 26.5%;*/
+    margin-left: 380px;
+    background-color: #f8f8f8;
+    border: none;
+    color: #666;
+    font-size: 16px;
+    font-weight: 500;
+    border-right: 6px solid #528fcc;
+}
+/*图表三个标签页，及日期选择器结束*/
+
+/*右侧最热股票展示区样式开始*/
+.hcharts-right table{
+    width: 100%;
+    background: #ffffff;
+    /*table-layout: fixed;*/
+    font-size: 14px;
+    margin-top: 10px;
+}
+/*.hcharts-right table tr{*/
+    /*padding-top: 3px;*/
+/*}
+想要设置表每行对的高度，就用line-height和height*/
+
+.hcharts-right table th, .hcharts-right table td{
+    text-align: center;
+    padding: 1px 1px 0 0;
+    line-height: 24px;
+    height: 24px;
+}
+
+.hcharts-right table td a{
+    text-decoration: none;
+    color: #528fcc;
+}
+
+.hcharts-right table td a:hover{
+    text-decoration: underline;
+}
+
+.hcharts-right{
+    width: 290px;
+    height: 378px;
+    padding: 0 17px;
+    float: right;
+    background: #ffffff;
+}
+
+.hcharts-right h4{
+    margin-top: 6px;
+    padding: 7px 0;
+    border-bottom: 1px solid #f1f1f1;
+    color: #d75442;
+}
+
+.hcharts-right .num{
+    color: #d75442;
+}
+
+
+/*右侧最热股票展示区样式结束*/
+
+.hcharts h3{
+    line-height: 26px;
+    color: #444;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.hcharts-left{
+    position: relative;
+    width: 910px;
+    float: left;
+}
+
+.hcharts-list{
+    float: left;
+    width: 230px;
+}
+
+.hcharts-list .item{
+    padding-top: 27px;
+    height: 162px;
+    background-color: #f8f8f8;
+    text-align: center;
+    cursor: pointer;
+}
+
+.hcharts-list .cur{
+    /*//当鼠标移入左边某个块内，背景变为白色，出现左边框*/
+    background-color: white;
+    border-left: 6px solid #d75442;
+    width: 224px;/*当鼠标移入时，被选中的块要稍微变得宽一些，和右边的大块连在一起*/
+}
+
+/*
+2:  行内元素设置width,  height无效
+3： 行内元素的水平方向的padding-left,padding-right,margin-left,margin-right 都产生边距效果，
+但是竖直方向的padding-top,padding-bottom,margin-top,margin-bottom都不会产生边距效果换句话说就是
+水平方向有效，竖直方向无效*/
+.hcharts-list .item h3{
+    display: inline-block;
+    padding-left: 33px;  /*对于一个块级元素，是一个盒子模型， 那想要在这个盒子模型里放入图片， 就要在盒子模型里给图片留下一定的位置*/
+    margin-top: 30px;
+}
+
+.hcharts-list h3.icons1{
+    background-position: 0 0;
+}
+
+.hcharts-list h3.icons2{
+    background-position: 0 -26px;
+}
+
+.hcharts-list .item .details{
+    margin-top: 20px;
+    line-height: 16px;  /*对于一个放文字的容器来说，height和line-height都要进行设置*/
+    height: 16px;
+    overflow: hidden;
+    color: #969696;
+    font-size: 12px;
+}
+
+.hcharts-list .item .details span{
+    margin: 0 10px;
+}
+
+.c-rise{
+    color: #d75442; !important;
+}
+
+.c-fall{
+    color: #59b881; !important;
+}
+
+/*界面中部展示表格的css     开始*/
+.hcharts-cont {
+    position: absolute;
+    left: 0;
+    width: 895px;
+    /*padding: 0 20px;*/
+    height: 378px;
+    background-color: #ffffff;
+}
+
+.hcharts-cont .hcharts-legend{
+    margin-top: 18px;
+    height: 14px;
+    line-height: 14px;
+    text-align: right;
+    overflow: hidden;
+}
+
+.hcharts-legend span{
+    color: #666;
+    margin-left: 40px;
+}
+
+/*界面中部展示表格的css     结束*/
+
+
+/*relative*/
+/*元素设置了relative时，是相对于元素本身位置,本身位置，本身位置进行定位；*/
+/*元素“div-1”向下移动了20px，向左移动了40px，本身位置变化了，而元素最初所占的物理空间依然还是存在，
+另外一点元素相对定位后并没有影响其他相邻的元素。*/
+
+/*absolute*/
+/*absolute是position中的第三个属性值，如果你给元素指定了absolute，
+整个元素就会漂出文档流，而且元素自身的物理空间也同时消失了。不像“relative”还具有原先的物理空间。
+*/
+
+.marketChartButton{
+    background-color: #F8F8F8;
+    outline: none;
+    height: 188px;
+    width: 240px;
+    float: left;
+}
+
+.marketChartLabel{
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.redLabel{
+    color: #C10D01;
+    font-size: 12px;
+}
+
+.greenLabel{
+    color: #008000;
+    font-size: 12px;
+}
+
+.chartButtonLeftBorder{
+    background-color: transparent;
+    border-left: 5px solid #528FCC;
+}

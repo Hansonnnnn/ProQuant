@@ -1,0 +1,54 @@
+/*页脚的样式*/
+.footer{
+    width: 100%;
+    height: 200px;
+    background: #ffffff;
+    border-bottom: 20px solid #EBEFF0;
+}
+
+/*左边的页脚*/
+.footer .left-footer{
+    /*display: inline-block;*/
+    /*width: 900px;*/
+    /*height: 160px;*/
+    margin: 20px 0 20px 0;
+    /*background: #F6F6F6;*/
+    border: none;
+    border-radius: 2px;
+    /*!*box-shadow: 1px 1px 10px;*!*/
+}
+
+.footer .left-footer h2{
+    font-size: 28px;
+    font-weight: 700;
+    color: #777;
+}
+
+.footer .left-footer p{
+    font-size: 16px;
+    font-weight: 500;
+    color: #777;
+}
+
+/*右边的页脚*/
+.footer .right-footer{
+    /*display: inline-block;*/
+    /*width: 310px;*/
+    /*height: 160px;*/
+    /*!*background-color: #F6F6F6;*!*/
+    margin: 20px 0 20px 0;
+}
+
+.footer .right-footer h2{
+    display: block;
+    margin-bottom: 11px;
+    font-size: 25px;
+    font-weight: 500;
+    color: #777;
+}
+
+.footer .right-footer img{
+    width: 45px;
+    height: 45px;
+    margin: 3px;
+}

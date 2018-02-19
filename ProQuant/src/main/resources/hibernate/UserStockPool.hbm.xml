@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-6-6 1:42:06 by Hibernate Tools 4.0.1.Final -->
+<hibernate-mapping>
+    <class name="PO.user.UserStockPool" table="user_stock_pool" catalog="proquant">
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="username" type="string">
+            <column name="username" length="16" not-null="true" />
+        </property>
+        <property name="stockcode" type="string">
+            <column name="stockcode" length="45" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

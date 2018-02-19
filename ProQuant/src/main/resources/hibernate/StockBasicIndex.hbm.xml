@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-6-10 0:50:47 by Hibernate Tools 5.2.1.Final -->
+<hibernate-mapping>
+    <class name="PO.StockBasicIndex" table="stock_basic_index" catalog="proquant" optimistic-lock="version">
+        <id name="code" type="string">
+            <column name="code" length="10" />
+            <generator class="assigned" />
+        </id>
+        <property name="weekChangeRatio" type="java.lang.Double">
+            <column name="week_change_ratio" precision="22" scale="0" />
+        </property>
+        <property name="monthChangeRatio" type="java.lang.Double">
+            <column name="month_change_ratio" precision="22" scale="0" />
+        </property>
+        <property name="seasonChangeRatio" type="java.lang.Double">
+            <column name="season_change_ratio" precision="22" scale="0" />
+        </property>
+        <property name="halfayearChangeRatio" type="java.lang.Double">
+            <column name="halfayear_change_ratio" precision="22" scale="0" />
+        </property>
+        <property name="yearChangeRatio" type="java.lang.Double">
+            <column name="year_change_ratio" precision="22" scale="0" />
+        </property>
+        <property name="pe" type="java.lang.Double">
+            <column name="pe" precision="22" scale="0" />
+        </property>
+        <property name="pb" type="java.lang.Double">
+            <column name="pb" precision="22" scale="0" />
+        </property>
+        <property name="pcf" type="java.lang.Double">
+            <column name="pcf" precision="22" scale="0" />
+        </property>
+        <property name="ps" type="java.lang.Double">
+            <column name="ps" precision="22" scale="0" />
+        </property>
+        <property name="perShareEarnings" type="java.lang.Double">
+            <column name="per_share_earnings" precision="22" scale="0" />
+        </property>
+        <property name="netProfitMarginOnSales" type="java.lang.Double">
+            <column name="net_profit_margin_on_sales" precision="22" scale="0" />
+        </property>
+        <property name="roa" type="java.lang.Double">
+            <column name="roa" precision="22" scale="0" />
+        </property>
+        <property name="debtAssetRatio" type="java.lang.Double">
+            <column name="debt_asset_ratio" precision="22" scale="0" />
+        </property>
+        <property name="currentRatio" type="java.lang.Double">
+            <column name="current_ratio" precision="22" scale="0" />
+        </property>
+        <property name="mainBusinessIncome" type="java.lang.Double">
+            <column name="main_business_income" precision="22" scale="0" />
+        </property>
+        <property name="netProfit" type="java.lang.Double">
+            <column name="net_profit" precision="22" scale="0" />
+        </property>
+        <property name="totalAssets" type="java.lang.Double">
+            <column name="total_assets" precision="22" scale="0" />
+        </property>
+        <property name="shareholdersEquity" type="java.lang.Double">
+            <column name="shareholders_equity" precision="22" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,789 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>用户中心</title>-->
+    <!--<link href="../css/bootstrap.min.css" rel="stylesheet">-->
+    <!--<link href="../css/font-awesome.min.css" rel="stylesheet">-->
+    <!--<link href="../css/animate.css" rel="stylesheet">-->
+    <!--<link href="../css/jquery.webui-popover.css" rel="stylesheet">-->
+    <!--<link href="../css/header.css" rel="stylesheet">-->
+    <!--<link href="../css/myCSS/nav_footerCSS.css" rel="stylesheet">-->
+    <!--<link href="../css/reset.css" rel="stylesheet">-->
+    <!--<link href="../css/myCSS/UserCenterCSS2.css" rel="stylesheet">-->
+    <!--<script src="../js/jquery-3.2.1.js"></script>-->
+    <!--<script src="../js/bootstrap.min.js" ></script>-->
+    <!--<script src="../js/jquery.webui-popover.js"></script>-->
+    <!--<script src="../js/header.js"></script>-->
+    <!--<script type="text/javascript" src="../js/myJS/UserCenterJS.js"></script>-->
+<!--</head>-->
+<!--<body>-->
+<!--&lt;!&ndash;导航栏start&ndash;&gt;-->
+    <!--<nav class="navbar navbar-default navbar-fixed-top">-->
+        <!--<div class="container">-->
+            <!--<div class="navbar-header">-->
+                <!--<a class="navbar-brand" href="#">ProQuant</a>-->
+            <!--</div>-->
+            <!--<ul class="nav navbar-nav">-->
+                <!--<li class="active"><a href="#">首页</a></li>-->
+                <!--<li><a href="#">大盘</a></li>-->
+                <!--<li><a href="#">个股</a></li>-->
+                <!--<li><a href="#">策略</a></li>-->
+                <!--<li><a href="#">论坛</a></li>-->
+            <!--</ul>-->
+            <!--<ul class="nav navbar-nav navbar-right">-->
+                <!--<li id="searchText"><input id="searchInput" type="text" placeholder="搜索"><i class="fa fa-search" aria-hidden="true"></i></li>-->
+                <!--<li><button id="loginButton"><i class="fa fa-user-circle" aria-hidden="true"></i>未登录</button></li>-->
+                <!--<li><img src="../images/skin.png"></li>-->
+            <!--</ul>-->
+        <!--</div>-->
+    <!--</nav>-->
+    <!--&lt;!&ndash;导航栏end&ndash;&gt;-->
+    <!--<div class="user-main-body">-->
+        <!--<div class="content-holder">-->
+            <!--<div class="personal-info-holder">-->
+                <!--<script>-->
+                    <!--function readFile(input) {-->
+
+<!--////                        alert(ele.value);-->
+<!--////                        document.getElementById("head-image").src = ele.value;-->
+<!--//                        var file = null;-->
+<!--//                        if(node.files && node.files[0] ){-->
+<!--//                            file = node.files[0];-->
+<!--//                        }else if(node.files && node.files.item(0)) {-->
+<!--//                            file = node.files.item(0);-->
+<!--//                        }-->
+<!--//                        alert(file.path);-->
+
+                        <!--if (input.files && input.files[0]) {-->
+
+                            <!--var reader = new FileReader();-->
+                            <!--reader.onload = function (e) {-->
+                                <!--$('#head-image').attr('src', e.target.result);-->
+<!--//                                var sss = e.target.result;-->
+<!--//                                   alert(sss);-->
+                                <!--alert("haha");-->
+                                <!--alert($('#head-image').attr('src'));-->
+                                <!--document.write($('#head-image').attr('src'));-->
+                            <!--};-->
+                            <!--reader.readAsDataURL(input.files[0]);-->
+
+                        <!--}-->
+
+
+                    <!--}-->
+                <!--</script>-->
+                <!--<input name="file" type="file" id="upload-head-image-button" onchange="readFile(this)">-->
+                <!--<img src="../images/temp-head.png" alt="Head Image" style="cursor: pointer" id="head-image">-->
+                <!--<span>Welcome!</span><span id="username-one">XXX</span><span><img id="edit-button-one" src="../images/edit.png" style="width: 20px;height: 20px;border-radius: 0px;margin-left: -10px;border: none;cursor: pointer"></span>-->
+                <!--<button id="qiandao-button">签到<img id="qiandao-button-image" src="../images/bottom-arrow-tri.svg" alt="下拉框" style="margin-left: 5px"></button>-->
+                <!--<button id="logoutButton">登出</button>-->
+            <!--</div>-->
+            <!--<div class="function-zone">-->
+                <!--<div class="bootstrap-tab">-->
+                    <!--<ul class="nav nav-tabs">-->
+                        <!--<li class="active" id="tab0"><a href="#" style="cursor: pointer">个人账户</a></li>-->
+                        <!--<li  id="tab1"><a href="#">自选股</a></li>-->
+                        <!--<li id="tab3"><a href="#">使用策略记录</a></li>-->
+                        <!--&lt;!&ndash;<li id="tab4"><a href="#">浏览个股历史</a></li>&ndash;&gt;-->
+                        <!--<button id="clear-button">清空</button>-->
+                    <!--</ul>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;标签页下面的功能区部分&ndash;&gt;-->
+                <!--<div class="function-content" id="user-account-part">-->
+                    <!--<div class="user-data-holder">-->
+                        <!--<div>-->
+                            <!--<script>-->
+                                <!--function changeToCNY() {-->
+                                    <!--$("#popover").webuiPopover('hide');-->
+                                    <!--$("#popover").html("总资产-人民币计 ∨");-->
+                                <!--}-->
+                                <!--function changeToUSD() {-->
+                                    <!--$("#popover").webuiPopover('hide');-->
+                                    <!--$("#popover").html("总资产-美元计 ∨");-->
+                                <!--}-->
+                            <!--</script>-->
+                            <!--<h4><a href="#" id="popover" data-title="货币类型" data-content="<a href='#' id='cnyLink' style='cursor: pointer' onclick='changeToCNY()'>人民币CNY</a></br><a href='#' id='usdLink' style='cursor: pointer' onclick='changeToUSD()'>美元USD</a>" data-placement="right">总资产-人民币计 ∨</a></h4>-->
+                            <!--<h2 id="totalProperty">￥2,000,000</h2>-->
+                            <!--<div class="user-item">-->
+                                <!--<h2>可用现金</h2>-->
+                                <!--<div><h4 id="availableProperty">￥1,999,999</h4></div>-->
+                            <!--</div>-->
+                            <!--<div class="user-item">-->
+                                <!--<h2>总盈亏</h2>-->
+                                <!--<div><h4>￥0</h4></div>-->
+
+                            <!--</div>-->
+                            <!--<div class="user-item">-->
+                                <!--<h2>今日盈亏</h2>-->
+                                <!--<div><h4>￥0</h4></div>-->
+                            <!--</div>-->
+                            <!--<div class="user-item">-->
+                                <!--<h2 style="border-left: 3px solid #296ec2">投资表现</h2>-->
+                                <!--&lt;!&ndash;<div id="graph-holder">&ndash;&gt;-->
+
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="deal-record-holder">-->
+                        <!--<h2 class="secondTabActive" id="second-tab1"><a>持仓记录</a></h2>-->
+                        <!--<h2 class="secondTabDeActive" id="second-tab2"><a>成交记录</a></h2>-->
+                        <!--<table class="table-hover table-responsive" id="chicang-table">-->
+                        <!--<thead>-->
+                        <!--<tr>-->
+                            <!--<th>股票名称</th>-->
+                            <!--<th>股票名称</th>-->
+                            <!--<th>最新价</th>-->
+                            <!--<th>持仓数量</th>-->
+                            <!--&lt;!&ndash;<th>浮动盈亏</th>&ndash;&gt;-->
+                            <!--<th>卖出</th>-->
+                        <!--</tr>-->
+                        <!--</thead>-->
+                        <!--<tbody>-->
+                        <!--<tr>-->
+                            <!--<td>阿里巴巴</td>-->
+                            <!--<td>阿里巴巴</td>-->
+                            <!--<td>44.96</td>-->
+                            <!--<td>1000</td>-->
+                            <!--&lt;!&ndash;<td>-960</td>&ndash;&gt;-->
+                            <!--<td>-->
+                                <!--<a title="sellButton">-->
+                                    <!--<img src="../images/sell.svg" alt="卖出">-->
+                                <!--</a>-->
+                            <!--</td>-->
+                        <!--</tr>-->
+
+                        <!--</tbody>-->
+                    <!--</table>-->
+                        <!--<table class="table-hover table-responsive disappear" id="chengjiao-table">-->
+                            <!--<thead>-->
+                            <!--<tr>-->
+                                <!--<th>交易时间</th>-->
+                                <!--<th>股票名称</th>-->
+                                <!--<th>交易类型</th>-->
+                                <!--<th>交易数量</th>-->
+                                <!--<th>均价</th>-->
+                            <!--</tr>-->
+                            <!--</thead>-->
+                            <!--<tbody>-->
+                            <!--<tr>-->
+                                <!--<td>2017-6-4</td>-->
+                                <!--<td>阿里巴巴</td>-->
+                                <!--<td>买入</td>-->
+                                <!--<td>1000</td>-->
+                                <!--<td>45.46</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>2017-6-4</td>-->
+                                <!--<td>百度</td>-->
+                                <!--<td>买入</td>-->
+                                <!--<td>1000</td>-->
+                                <!--<td>45.46</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>2017-6-4</td>-->
+                                <!--<td>腾讯</td>-->
+                                <!--<td>买入</td>-->
+                                <!--<td>1000</td>-->
+                                <!--<td>45.46</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>2017-6-4</td>-->
+                                <!--<td>谷歌</td>-->
+                                <!--<td>买入</td>-->
+                                <!--<td>1000</td>-->
+                                <!--<td>45.46</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>2017-6-4</td>-->
+                                <!--<td>苹果</td>-->
+                                <!--<td>买入</td>-->
+                                <!--<td>1000</td>-->
+                                <!--<td>45.46</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>2017-6-4</td>-->
+                                <!--<td>亚马逊</td>-->
+                                <!--<td>买入</td>-->
+                                <!--<td>1000</td>-->
+                                <!--<td>45.46</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>2017-6-4</td>-->
+                                <!--<td>Facebook</td>-->
+                                <!--<td>买入</td>-->
+                                <!--<td>1000</td>-->
+                                <!--<td>45.46</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>2017-6-4</td>-->
+                                <!--<td>IBM</td>-->
+                                <!--<td>买入</td>-->
+                                <!--<td>1000</td>-->
+                                <!--<td>45.46</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>2017-6-4</td>-->
+                                <!--<td>三星</td>-->
+                                <!--<td>买入</td>-->
+                                <!--<td>1000</td>-->
+                                <!--<td>45.46</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>2017-6-4</td>-->
+                                <!--<td>小米</td>-->
+                                <!--<td>买入</td>-->
+                                <!--<td>1000</td>-->
+                                <!--<td>45.46</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>2017-6-4</td>-->
+                                <!--<td>华为</td>-->
+                                <!--<td>买入</td>-->
+                                <!--<td>1000</td>-->
+                                <!--<td>45.46</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>2017-6-4</td>-->
+                                <!--<td>华为</td>-->
+                                <!--<td>买入</td>-->
+                                <!--<td>1000</td>-->
+                                <!--<td>45.46</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>2017-6-4</td>-->
+                                <!--<td>华为</td>-->
+                                <!--<td>买入</td>-->
+                                <!--<td>1000</td>-->
+                                <!--<td>45.46</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td>2017-6-4</td>-->
+                                <!--<td>华为</td>-->
+                                <!--<td>买入</td>-->
+                                <!--<td>1000</td>-->
+                                <!--<td>45.46</td>-->
+                            <!--</tr>-->
+                            <!--</tbody>-->
+                        <!--</table>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="function-content zixuangu-part disappear" id="zixuangu-part">-->
+                   <!--<table class="table-hover table-responsive">-->
+                       <!--<thead>-->
+                       <!--<tr>-->
+                           <!--<th>序号</th>-->
+                           <!--<th>股票ID</th>-->
+                           <!--<th>股票名称</th>-->
+                           <!--<th>现价</th>-->
+                           <!--<th>涨跌幅</th>-->
+                           <!--<th>成交量</th>-->
+                           <!--<th>删除自选</th>-->
+                       <!--</tr>-->
+                       <!--</thead>-->
+                       <!--<tbody>-->
+                       <!--<tr>-->
+                           <!--<td>1</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">000000</a>-->
+                           <!--</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">测试股</a>-->
+                           <!--</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);" title="deleteButton">-->
+                                   <!--<img src="../images/delete.png">-->
+                               <!--</a>-->
+                           <!--</td>-->
+                       <!--</tr>-->
+                       <!--<tr>-->
+                           <!--<td>2</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">000001</a>-->
+                           <!--</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">测试股</a>-->
+                           <!--</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);" title="deleteButton">-->
+                                   <!--<img src="../images/delete.png">-->
+                               <!--</a>-->
+                           <!--</td>-->
+                       <!--</tr>-->
+                       <!--<tr>-->
+                           <!--<td>2</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">000001</a>-->
+                           <!--</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">测试股</a>-->
+                           <!--</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);" title="deleteButton">-->
+                                   <!--<img src="../images/delete.png">-->
+                               <!--</a>-->
+                           <!--</td>-->
+                       <!--</tr>-->
+                       <!--<tr>-->
+                           <!--<td>2</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">000001</a>-->
+                           <!--</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">测试股</a>-->
+                           <!--</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);" title="deleteButton">-->
+                                   <!--<img src="../images/delete.png">-->
+                               <!--</a>-->
+                           <!--</td>-->
+                       <!--</tr>-->
+                       <!--<tr>-->
+                           <!--<td>2</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">000001</a>-->
+                           <!--</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">测试股</a>-->
+                           <!--</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);" title="deleteButton">-->
+                                   <!--<img src="../images/delete.png">-->
+                               <!--</a>-->
+                           <!--</td>-->
+                       <!--</tr>-->
+                       <!--<tr>-->
+                           <!--<td>2</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">000001</a>-->
+                           <!--</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">测试股</a>-->
+                           <!--</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);" title="deleteButton">-->
+                                   <!--<img src="../images/delete.png">-->
+                               <!--</a>-->
+                           <!--</td>-->
+                       <!--</tr>-->
+                       <!--<tr>-->
+                           <!--<td>2</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">000001</a>-->
+                           <!--</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">测试股</a>-->
+                           <!--</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);" title="deleteButton">-->
+                                   <!--<img src="../images/delete.png">-->
+                               <!--</a>-->
+                           <!--</td>-->
+                       <!--</tr>-->
+                       <!--<tr>-->
+                           <!--<td>2</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">000001</a>-->
+                           <!--</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">测试股</a>-->
+                           <!--</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);" title="deleteButton">-->
+                                   <!--<img src="../images/delete.png">-->
+                               <!--</a>-->
+                           <!--</td>-->
+                       <!--</tr>-->
+                       <!--<tr>-->
+                           <!--<td>2</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">000001</a>-->
+                           <!--</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">测试股</a>-->
+                           <!--</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);" title="deleteButton">-->
+                                   <!--<img src="../images/delete.png">-->
+                               <!--</a>-->
+                           <!--</td>-->
+                       <!--</tr>-->
+
+                       <!--<tr>-->
+                           <!--<td>3</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">000002</a>-->
+                           <!--</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">测试股</a>-->
+                           <!--</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);" title="deleteButton">-->
+                                   <!--<img src="../images/delete.png">-->
+                               <!--</a>-->
+                           <!--</td>-->
+                       <!--</tr>-->
+                       <!--<tr>-->
+                           <!--<td>4</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">000003</a>-->
+                           <!--</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">测试股</a>-->
+                           <!--</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);" title="deleteButton">-->
+                                   <!--<img src="../images/delete.png">-->
+                               <!--</a>-->
+                           <!--</td>-->
+                       <!--</tr>-->
+                       <!--<tr>-->
+                           <!--<td>5</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">000004</a>-->
+                           <!--</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">测试股</a>-->
+                           <!--</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);" title="deleteButton">-->
+                                   <!--<img src="../images/delete.png">-->
+                               <!--</a>-->
+                           <!--</td>-->
+                       <!--</tr>-->
+                       <!--<tr>-->
+                           <!--<td>6</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">000005</a>-->
+                           <!--</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">测试股</a>-->
+                           <!--</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);" title="deleteButton">-->
+                                   <!--<img src="../images/delete.png">-->
+                               <!--</a>-->
+                           <!--</td>-->
+                       <!--</tr>-->
+                       <!--<tr>-->
+                           <!--<td>7</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">000006</a>-->
+                           <!--</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">测试股</a>-->
+                           <!--</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);" title="deleteButton">-->
+                                   <!--<img src="../images/delete.png">-->
+                               <!--</a>-->
+                           <!--</td>-->
+                       <!--</tr>-->
+                       <!--<tr>-->
+                           <!--<td>8</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">000007</a>-->
+                           <!--</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">测试股</a>-->
+                           <!--</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);" title="deleteButton">-->
+                                   <!--<img src="../images/delete.png">-->
+                               <!--</a>-->
+                           <!--</td>-->
+                       <!--</tr>-->
+                       <!--<tr>-->
+                           <!--<td>9</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">000008</a>-->
+                           <!--</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">测试股</a>-->
+                           <!--</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);" title="deleteButton">-->
+                                   <!--<img src="../images/delete.png">-->
+                               <!--</a>-->
+                           <!--</td>-->
+                       <!--</tr>-->
+                       <!--<tr>-->
+                           <!--<td>10</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">00000</a>-->
+                           <!--</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);">测试股</a>-->
+                           <!--</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>&#45;&#45;</td>-->
+                           <!--<td>-->
+                               <!--<a href="javascript:void(0);" title="deleteButton">-->
+                                   <!--<img src="../images/delete.png">-->
+                               <!--</a>-->
+                           <!--</td>-->
+                       <!--</tr>-->
+                       <!--</tbody>-->
+                   <!--</table>-->
+                <!--</div>-->
+                <!--<div class="function-content usestrategy-part disappear" id="usestrategy-part">-->
+                    <!--<table class="table-hover table-responsive">-->
+                        <!--<thead>-->
+                        <!--<tr>-->
+                            <!--<th>编号</th>-->
+                            <!--<th>策略算法</th>-->
+                            <!--<th>开始时间</th>-->
+                            <!--<th>结束时间</th>-->
+                            <!--<th>股票池</th>-->
+                            <!--<th>策略基准</th>-->
+                            <!--<th>形成期</th>-->
+                            <!--<th>持有期</th>-->
+                            <!--<th>最大持股数(支)</th>-->
+                            <!--&lt;!&ndash;<th>使用策略</th>&ndash;&gt;-->
+                        <!--</tr>-->
+                        <!--</thead>-->
+                        <!--<tbody>-->
+                        <!--<tr>-->
+                            <!--<td>1</td>-->
+                            <!--<td>最挣钱的策略</td>-->
+                            <!--<td>2017-5-23</td>-->
+                            <!--<td>2017-5-23</td>-->
+                            <!--<td>全部股票</td>-->
+                            <!--<td>沪深300</td>-->
+                            <!--<td>5</td>-->
+                            <!--<td>5</td>-->
+                            <!--<td>10</td>-->
+                            <!--&lt;!&ndash;<td>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<a href="#" title="userStrategy">使用</a>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</td>&ndash;&gt;-->
+                            <!--<td style="display: none;">120001</td>-->
+                        <!--</tr>-->
+                        <!--</tbody>-->
+                    <!--</table>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;<div class="function-content history-part disappear" id="history-part">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div style="display: inline-block;">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<table class="table-hover table-responsive">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<thead>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<th>序号</th>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<th>股票ID</th>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<th>股票名称</th>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</thead>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<tbody>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<td>1</td>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<td>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<a>000000</a>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</td>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<td>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<a>测试股</a>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</td>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</tbody>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</table>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<div class="Easter-Egg">&ndash;&gt;-->
+                        <!--&lt;!&ndash;<div class="head-image-box">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<img src="../images/upbg.jpg" style="width: 460px;height: 310px;border: 3px solid #8c8c8c;border-radius: 3px">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<p style="width: 100%;text-align: right">&#45;&#45;Pic : Trade area of the VOC around 1700</p>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<div class="text-box">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<p style="margin: 5px;padding-left: 10px;padding-right: 10px;line-height: 18px">&nbsp;&nbsp;&nbsp;&nbsp;VOC is widely known as the "Dutch East India Company".The VOC is generally considered to be&ndash;&gt;-->
+                                <!--&lt;!&ndash;the first multinational enterprise to issue shares of stock to the public.</p>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--&lt;!&ndash;&lt;!&ndash;</div>&ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash;页脚start&ndash;&gt;-->
+    <!--<div class="footer  container">-->
+        <!--<div class="row">-->
+            <!--<div class="left-footer col-sm-9">-->
+                <!--<div>-->
+                    <!--<h2>关于ProQuant</h2>-->
+                    <!--<br>-->
+                    <!--<p>ProQuant是一款基于提供股票市场情况展示，个股信息展示，股票各项指标预测功能于一体的多功能股票查询、-->
+                        <!--<br>分析的软件。</p>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="right-footer col-sm-3">-->
+                <!--<div>-->
+                    <!--<h2>关于我们</h2>-->
+                    <!--<br>-->
+                    <!--<p></p>-->
+                <!--</div>-->
+                <!--<div>-->
+                    <!--<a href=""><img src="../images/weibo.png" alt="微博"></a>-->
+                    <!--<a href=""><img src="../images/weixin.png" alt="微信"></a>-->
+                    <!--<a href=""><img src="../images/qq.png" alt="QQ"></a>-->
+
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--&lt;!&ndash;页脚end&ndash;&gt;-->
+    <!--&lt;!&ndash;隐藏对话框：功能：当用户选择多只删除时弹出&ndash;&gt;-->
+    <!--<div id="attentionDialog" class="fadeIn">-->
+        <!--<h2>提示</h2>-->
+        <!--<h4>您确认删除已选中的多只股票吗？</h4>-->
+        <!--<div style="width: 50%;margin: 5px auto;">-->
+            <!--<input type="button" value="确认" id="confirm-button">-->
+            <!--<input type="button" value="取消" style="background-color: #8c8c8c" id="cancel-button">-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="edit-info-holder opacityEighty container disappear" id="edit-info-holder">-->
+        <!--<div class="left-triangle">&lt;!&ndash;本Div只来实现三角形，无其他作用&ndash;&gt;</div>-->
+        <!--<form class="form-horizontal" role="form">-->
+            <!--&lt;!&ndash;<div class="id-holder form-group row">&ndash;&gt;-->
+                <!--&lt;!&ndash;<label class="col-sm-4 control-label" style="padding-right: 20px;">账号</label>&ndash;&gt;-->
+                <!--&lt;!&ndash;<label class="col-sm-8 control-label" style="padding-right: 50%;">0000001</label>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--<div class="username-holder form-group row">-->
+                <!--<label class="col-sm-4 control-label" >用户名</label>-->
+                <!--<label class="col-sm-8 control-label" style="padding-right: 50%;"><a data-toggle="tooltip" id="username-two">Luminary</a></label>-->
+            <!--</div>-->
+            <!--<div class="form-group row">-->
+                <!--<label class="col-sm-4 control-label" for="old-passwordInput">原密码</label>-->
+                <!--<div class="col-sm-8">-->
+                    <!--<input class="form-control" id="old-passwordInput" type="password" value="请输入原密码">-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="form-group row">-->
+                <!--<label class="col-sm-4 control-label" for="new-passwordInput">新密码</label>-->
+                <!--<div class="col-sm-8">-->
+                    <!--<input class="form-control" id="new-passwordInput" type="password" value="请输入新密码">-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</form>-->
+        <!--&lt;!&ndash;<div class="old-password-holder">&ndash;&gt;-->
+            <!--&lt;!&ndash;<label class="control-label" style="display: inline-block">原密码</label>&ndash;&gt;-->
+            <!--&lt;!&ndash;<input type="password" class="form-control" value="请输入原密码..." style="display: inline-block">&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div class="form-group">&ndash;&gt;-->
+            <!--&lt;!&ndash;<label class="col-sm-3 control-label">原密码</label>&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="col-sm-10">&ndash;&gt;-->
+                <!--&lt;!&ndash;<input class="form-control" id="focusedInput" type="password" value="请输入原密码...">&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;<div class="new-password-holder">&ndash;&gt;-->
+            <!--&lt;!&ndash;<label>新密码</label>&ndash;&gt;-->
+            <!--&lt;!&ndash;<input type="password">&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--<div class="save-button-holder">-->
+            <!--<button type="button" id="edit-button-two" class="editAndSaveButtonOut">编辑</button>-->
+            <!--<button type="button" id="save-button" class="editAndSaveButtonOut">保存</button>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--&lt;!&ndash;<div class="qiandao-holder">&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;放置四个数据&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<div>&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="my-row">&ndash;&gt;-->
+                <!--&lt;!&ndash;<label class="fixed-label">连续签到</label>&ndash;&gt;-->
+                <!--&lt;!&ndash;<label class="unfixed-label">3</label>&ndash;&gt;-->
+                <!--&lt;!&ndash;<label class="fixed-label">当月签到</label>&ndash;&gt;-->
+                <!--&lt;!&ndash;<label class="unfixed-label">10</label>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="my-row">&ndash;&gt;-->
+                <!--&lt;!&ndash;<label class="fixed-label">总签到</label>&ndash;&gt;-->
+                <!--&lt;!&ndash;<label class="unfixed-label">20</label>&ndash;&gt;-->
+                <!--&lt;!&ndash;<label class="fixed-label">签到奖励</label>&ndash;&gt;-->
+                <!--&lt;!&ndash;<label class="">10000</label>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;放置两个日期&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<div>&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="my-row">&ndash;&gt;-->
+                <!--&lt;!&ndash;<div class="month-selector">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<img src="../images/left-arrow-tri.svg">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<label>2017-06</label>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<img src="../images/right-arrow-tri.svg">&ndash;&gt;-->
+                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                <!--&lt;!&ndash;<label class="year-label">2017-06-04</label>&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;&lt;!&ndash;放置日历&ndash;&gt;&ndash;&gt;-->
+        <!--&lt;!&ndash;<div>&ndash;&gt;-->
+            <!--&lt;!&ndash;&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--<div class="new-qiandao-holder disappear">-->
+        <!--<div class="top-triangle"></div>-->
+        <!--<div>-->
+            <!--<h4>您已连续签到</h4><h1>5</h1><h4>天</h4>-->
+        <!--</div>-->
+        <!--<div>-->
+            <!--<h4>当前每日获得奖励</h4><h1>100</h1><h4>元</h4>-->
+        <!--</div>-->
+        <!--<div>-->
+            <!--<h4>累计连续签到</h4><h1>7</h1><h4>天</h4>-->
+        <!--</div>-->
+        <!--<div>-->
+            <!--<h4>每日将获得奖励</h4><h1>500</h1><h4>元</h4>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div id="toaster_close">-->
+        <!--<div id="toaster">-->
+            <!--<div id="pic_div" class="green_pic"></div>-->
+            <!--<div id="remind" class="green_word">提示消息</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+

@@ -1,0 +1,38 @@
+
+#funcIntro{
+    margin-bottom: 20px;
+}
+
+.intro{
+    display: inline-block;
+    padding: 30px 50px;
+}
+
+.intro:hover{
+    background-color: #D5D5D5;
+}
+
+.introTitle{
+    font-size: 20px;
+    color:black;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.introTxt{
+    font-size: 22px;
+    color: #A5A5A5;
+}
+
+.introGap{
+    display: inline-block;
+    width: 1px;
+    height:130px;
+    background-color: #C5C5C5;
+}
+
+.homeTxt{
+    font-size: 25px;
+    color: white;
+    padding-top: 20px ;
+}

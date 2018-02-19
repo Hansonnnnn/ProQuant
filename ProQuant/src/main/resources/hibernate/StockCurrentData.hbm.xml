@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-6-1 20:08:56 by Hibernate Tools 5.2.1.Final -->
+<hibernate-mapping>
+    <class name="PO.StockCurrentData" table="stock_current_data" catalog="proquant" optimistic-lock="version">
+        <id name="code" type="string">
+            <column name="code" length="45" />
+            <generator class="assigned" />
+        </id>
+        <property name="name" type="string">
+            <column name="name" length="45" />
+        </property>
+        <property name="date" type="timestamp">
+            <column name="date" length="19" />
+        </property>
+        <property name="changepercent" type="java.lang.Double">
+            <column name="changepercent" precision="22" scale="0">
+                <comment>&#213;&#199;&#181;&#248;&#183;&#249;</comment>
+            </column>
+        </property>
+        <property name="trade" type="java.lang.Double">
+            <column name="trade" precision="22" scale="0">
+                <comment>&#207;&#214;&#188;&#219;</comment>
+            </column>
+        </property>
+        <property name="open" type="java.lang.Double">
+            <column name="open" precision="22" scale="0">
+                <comment>&#191;&#170;&#197;&#204;&#188;&#219;</comment>
+            </column>
+        </property>
+        <property name="high" type="java.lang.Double">
+            <column name="high" precision="22" scale="0" />
+        </property>
+        <property name="low" type="java.lang.Double">
+            <column name="low" precision="22" scale="0" />
+        </property>
+        <property name="settlement" type="java.lang.Double">
+            <column name="settlement" precision="22" scale="0">
+                <comment>&#215;&#242;&#200;&#213;&#202;&#213;&#197;&#204;&#188;&#219;</comment>
+            </column>
+        </property>
+        <property name="volume" type="java.lang.Long">
+            <column name="volume" />
+        </property>
+        <property name="turnoverratio" type="java.lang.Double">
+            <column name="turnoverratio" precision="22" scale="0">
+                <comment>&#187;&#187;&#202;&#214;&#194;&#202;</comment>
+            </column>
+        </property>
+        <property name="amount" type="java.lang.Long">
+            <column name="amount">
+                <comment>&#179;&#201;&#189;&#187;&#193;&#191;</comment>
+            </column>
+        </property>
+        <property name="per" type="java.lang.Double">
+            <column name="per" precision="22" scale="0">
+                <comment>&#202;&#208;&#211;&#175;&#194;&#202;</comment>
+            </column>
+        </property>
+        <property name="pb" type="java.lang.Double">
+            <column name="pb" precision="22" scale="0">
+                <comment>&#202;&#208;&#190;&#187;&#194;&#202;</comment>
+            </column>
+        </property>
+        <property name="mktcap" type="java.lang.Double">
+            <column name="mktcap" precision="22" scale="0">
+                <comment>&#215;&#220;&#202;&#208;&#214;&#181;</comment>
+            </column>
+        </property>
+        <property name="nmc" type="java.lang.Double">
+            <column name="nmc" precision="22" scale="0">
+                <comment>&#193;&#247;&#205;&#168;&#202;&#208;&#214;&#181;</comment>
+            </column>
+        </property>
+    </class>
+</hibernate-mapping>

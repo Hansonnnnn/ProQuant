@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-6-3 2:17:17 by Hibernate Tools 5.2.1.Final -->
+<hibernate-mapping>
+    <class name="PO.user.UserAccount" table="user_account" catalog="proquant" optimistic-lock="version">
+        <id name="username" type="string">
+            <column name="username" length="16" />
+            <generator class="assigned" />
+        </id>
+        <property name="availablePrincipal" type="java.lang.Double">
+            <column name="available_principal" precision="22" scale="0" />
+        </property>
+        <property name="storagePrincipal" type="java.lang.Double">
+            <column name="storage_principal" precision="22" scale="0" />
+        </property>
+        <property name="profit" type="java.lang.Double">
+            <column name="profit" precision="22" scale="0" />
+        </property>
+        <property name="signdate" type="date">
+            <column name="signdate" length="10" />
+        </property>
+        <property name="consecutiveDaysNum" type="java.lang.Integer">
+            <column name="consecutive_days_num" />
+        </property>
+        <property name="historyPrincipal" type="java.lang.Double">
+            <column name="history_principal" precision="22" scale="0">
+                <comment>
+                &#192;&#250;&#202;&#183;&#203;&#249;&#211;&#208;&#187;&#241;&#181;&#195;&#181;&#196;&#177;&#190;&#189;&#240;&#189;&#240;&#182;&#238;&#163;&#172;&#189;&#246;&#211;&#195;&#211;&#218;&#188;&#198;&#203;&#227;profit
+                &#178;&#187;&#211;&#195;&#211;&#218;&#207;&#212;&#202;&#190;&#189;&#231;&#195;&#230;</comment>
+            </column>
+        </property>
+         <property name="todayProfit" type="java.lang.Double">
+            <column name="today_profit" precision="22" scale="0" />
+        </property>
+         <property name="yesterdayPrincipal" type="java.lang.Double">
+            <column name="yesterday_principal" precision="22" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

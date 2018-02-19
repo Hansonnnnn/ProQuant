@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>策略回测</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/header.css" rel="stylesheet">
+    <link href="../css/myCSS/StrategyPageCSS.css" rel="stylesheet">
+    <link href="../css/myCSS/nav_footerCSS.css" rel="stylesheet">
+    <script src="../js/jquery-3.2.1.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/header.js" type="text/javascript"></script>
+    <script src="../js/jquery.scrollTo.js" type="text/javascript"></script>
+    <script src="../js/myJS/StrategyJS.js" type="text/javascript"></script>
+    <script src="../js/globalVariables.js" type="text/javascript"></script>
+</head>
+<body>
+<!--导航栏start-->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">ProQuant</a>
+        </div>
+        <ul id="navigation" class="nav navbar-nav">
+            <li class="active"><a href="/HomePage/ToHomePage.do">首页</a></li>
+            <li><a href="/MarketPage/toMarketPage.do">大盘</a></li>
+            <li><a href="/StockInfo/603998/toStockInfo.do">个股</a></li>
+            <li><a href="/StockCompare/toStockCompare.do">比较</a></li>
+            <li><a href="/Strategy/toStrategy.do">策略</a></li>
+            <li><a href="#">论坛</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li id="searchText">
+                <input id="searchInput" type="text" placeholder="搜索">
+                <button style="background-color: transparent;color: #1F4374;"><i class="fa fa-search" aria-hidden="true"></i></button>
+            </li>
+            <li class="loginButtonHolder">
+                <!--<%if(session.getAttribute("username") != null){%>-->
+                <!--<button id="loginButton"><i class="fa fa-user-circle" aria-hidden="true"></i><%=session.getAttribute("username")%></button>-->
+                <!--<%}else{%>-->
+                <button id="loginButton"><i class="fa fa-user-circle" aria-hidden="true"></i>未登录</button>
+                <!--<%}%>-->
+
+            </li>
+            <li>
+                <div class="dropdown" id="skin">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
+                            style="background-color: transparent;border: none">
+                        <img src="../images/skin.png">
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li>
+                            <button style="background-color: #292C31"><span>酷炫黑<i class="fa fa-check-circle" style="color: #B82525" aria-hidden="true"></i></span>
+                            </button>
+                        </li>
+                        <li>
+                            <button style="background-color: #90C5E7"><span>淡蓝</span></button>
+                        </li>
+                        <li>
+                            <button style="background-color: #601F00"><span>棕色</span></button>
+                        </li>
+                        <li>
+                            <button style="background-color: #48A564"><span>清新绿</span></button>
+                        </li>
+                        <li>
+                            <button style="background-color: #ECC180"><span>土豪金</span></button>
+                        </li>
+                        <li>
+                            <button style="background-color: #EF99BC"><span>可爱粉</span></button>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!--导航栏end-->
+    <div class="main">
+        <div class="bg"></div>
+        <div>
+            <h1>策略回测</h1>
+            <p>这里有最精准的策略，供您购买前对趋势的预测。</p>
+        </div>
+        <div class="pic-holder">
+            <input type="button" value="使用策略" id="use-strategy-button">
+            <!--<input type="button" value="趋势预测" id="make-strategy-button">-->
+        </div>
+    </div>
+
+    <div class="three-strategy">
+        <!--<div class="strategy-one">-->
+            <!--<h1>BP神经网络算法</h1>-->
+            <!--&lt;!&ndash;content-holder是策略浮块中间的部分&ndash;&gt;-->
+            <!--<div class="content_holder">-->
+                <!--<h4>趋势拟合指标：</h4>-->
+                <!--<select class="select-item">-->
+                    <!--<option value="">开盘价</option>-->
+                    <!--<option value="">收盘价</option>-->
+                    <!--<option value="">最高价</option>-->
+                    <!--<option value="">最低价</option>-->
+                    <!--<option value="">成交量</option>-->
+                <!--</select>-->
+                <!--<div class="graph-holder">-->
+
+                <!--</div>-->
+                <!--<div class="message-holder">-->
+                    <!--<p>注：上图展示使用2005年-2015年期间10年股票数据训练算法模型，进行预测2015年-2016年股市各项指标与真实数据走势的拟合程度，经海量数据训练算法模型，预测准确程度已达95%。</p>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--&lt;!&ndash;btn-holder是放置按钮的地方&ndash;&gt;-->
+            <!--<div class="btn_holder">-->
+                <!--<input type="button" value="使用策略" id="use-strategy-button-one">-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="strategy-two">
+            <h1>动量交易算法</h1>
+            <!--content-holder是策略浮块中间的部分-->
+            <div class="content_holder">
+                <br>
+                <br>
+                <img src="../images/movement.png" width="500px" height="250px" alt="动量回测策略">
+                <div class="message-holder">
+                    <p>注：动量交易策略认为股票或者其他资产的价格在一段时间内的趋势能够延续，通过成功捕获价格趋势的延续来获取收益。动量策略的思路和均值回归策略刚好相反，均值回归依赖于趋势终将会回归。</p>
+                </div>
+            </div>
+            <div class="btn_holder">
+                <input type="button" value="使用策略" id="use-strategy-button-two">
+            </div>
+        </div>
+        <div class="strategy-three">
+            <h1>均值回归算法</h1>
+            <!--content-holder是策略浮块中间的部分-->
+            <div class="content_holder">
+                <br>
+                <br>
+                <img src="../images/mean.png" width="500px" height="250px" alt="均值回归策略">
+                <div class="message-holder">
+                    <p>注：均值回归，又称Mean Reversion，是在价格震荡中博取反弹的交易思路，它是基于Poterba和Summers（1987）首先提出的一种现象，如果要用一句话总结，那就是“跌下去的迟早要涨上来”。</p>
+                </div>
+            </div>
+            <div class="btn_holder">
+                <input type="button" value="使用策略" id="use-strategy-button-three">
+            </div>
+        </div>
+    </div>
+    <!--制定策略和使用策略的部分-->
+    <div class="main-body" id="main-body">
+        <div class="bootstrap-tab">
+            <ul class="nav nav-tabs">
+                <li class="active"><a id="use-strategy-tab" style="cursor: pointer;">使用策略</a></li>
+                <li><a id="make-strategy-tab" style="cursor: pointer;">趋势预测</a></li>
+            </ul>
+        </div>
+        <div class="parent-holder">
+            <div id="use-strategy-model">
+                <div class="m-input-section">
+                    <div class="strategy-type-holder m-input-section-cell">
+                        <h4>策略回测算法</h4>
+                        <select class="select-item" id="algorithm-list">
+                            <option value="BP">BP神经网络算法</option>
+                            <option value="movement">动量交易算法</option>
+                            <option value="average">均值回归算法</option>
+                        </select>
+                    </div>
+                    <div class="h-holder">
+                        <h2>回测条件</h2>
+                    </div>
+                    <div class="m-input-section-cell">
+                        <h4>股票池</h4>
+                        <select class="select-item" id="stockPlate">
+                            <option value="allStocks">全部股票</option>
+                            <option value="hushen300">沪深300</option>
+                            <option value="chuangyeban">创业板</option>
+                            <option value="zhongxiaoban">中小板</option>
+                            <option value="zixuangu">自选股</option>
+                        </select>
+                    </div>
+                    <div class="m-input-section-cell">
+                        <h4>策略基准</h4>
+                        <select class="select-item" id="baseStandard">
+                            <option value="hushen300">沪深300</option>
+                            <option value="chuangyeban">创业板</option>
+                            <option value="zhongxiaoban">中小板</option>
+                        </select>
+                    </div>
+                    <div class="m-input-section-cell">
+                        <h4>形成期</h4>
+                        <select class="select-item" id="processingDays">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                            <option value="25">25</option>
+                            <option value="30">30</option>
+                        </select>
+                    </div>
+                    <div class="m-input-section-cell">
+                        <h4>持有期</h4>
+                        <select class="select-item" id="holdDays">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                            <option value="25">25</option>
+                            <option value="30">30</option>
+                        </select>
+                    </div>
+                    <div class="m-input-section-cell">
+                        <h4>最大持股数</h4>
+                        <select class="select-item" id="maxHoldNum">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="m-input-section-cell">
+                    <label>开始日期<input type="date" placeholder="开始日期" id="startDatePicker"></label>
+                    <label>结束日期<input  class="end-datepicker" type="date" placeholder="结束日期" id="endDatePicker"></label>
+                </div>
+                    <div class="m-input-section-cell">
+                        <button id="startButtonOne">开始回测</button>
+                    </div>
+                </div>
+
+            </div>
+            <!--标签页下面左边的放置图表的位置-->
+            <!--第一个DIV是输入的区域-->
+            <div id="make-strategy-model">
+                <div class="makeStrategyPart">
+                    <div class="" style="display: inline-block;">
+                        <h4 style="display: inline-block; margin-right: 10px">股票代码</h4><input type="text" placeholder="请输入股票代码！" name="codeInput" id="codeInput"  style="line-height: 30px;height: 30px;border-radius: 5px">
+                    </div>
+                    <div class="make-strategy-button">
+                        <button id="startButtonTwo">开始回测</button>
+                    </div>
+                </div>
+                <!--<div class="m-input-section">-->
+
+                    <!--<div class="h-holder addstyle">-->
+                        <!--<h2>策略指标</h2>-->
+                    <!--</div>-->
+                    <!--<div class="save-btn-holder">-->
+                        <!--<button>重建策略</button>-->
+                        <!--<button>保存策略</button>-->
+                    <!--</div>-->
+                    <!--<br>-->
+                    <!--<div class="m-input-section-cell">-->
+                        <!--<h4>股票池</h4>-->
+                        <!--<select class="select-item">-->
+                            <!--<option value="">全部股票</option>-->
+                            <!--<option value="">沪深300</option>-->
+                            <!--<option value="">创业板</option>-->
+                            <!--<option value="">中小板</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                    <!--<div class="m-input-section-cell">-->
+                        <!--<h4>策略基准</h4>-->
+                        <!--<select class="select-item">-->
+                            <!--<option value="">沪深300</option>-->
+                            <!--<option value="">创业板</option>-->
+                            <!--<option value="">中小板</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                    <!--<div class="m-input-section-cell">-->
+                        <!--<h4>调仓周期</h4>-->
+                        <!--<select class="select-item">-->
+                            <!--<option value="">10</option>-->
+                            <!--<option value="">30</option>-->
+                            <!--<option value="">90</option>-->
+                            <!--<option value="">180</option>-->
+                            <!--<option value="">365</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                    <!--<div class="m-input-section-cell">-->
+                        <!--<h4>最大持股数</h4>-->
+                        <!--<select class="select-item">-->
+                            <!--<option value="">5</option>-->
+                            <!--<option value="">10</option>-->
+                            <!--<option value="">20</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+                    <!--<div class="m-input-section-cell">-->
+                        <!--<label>开始日期<input type="date" placeholder="开始日期"></label>-->
+                        <!--<label>结束日期<input  class="end-datepicker" type="date" placeholder="结束日期"></label>-->
+                    <!--</div>-->
+                    <!--<div class="h-holder">-->
+                        <!--<h2>选股指标</h2>-->
+                    <!--</div>-->
+                    <!--<div class="table-holder" style="display: inline-block;">-->
+                        <!--<table>-->
+                            <!--<thead>-->
+                            <!--<tr>-->
+                                <!--<th></th>-->
+                                <!--<th>指标</th>-->
+                                <!--<th>条件</th>-->
+                                <!--<th>值</th>-->
+                            <!--</tr>-->
+                            <!--</thead>-->
+                            <!--<tbody>-->
+                            <!--<tr>-->
+                                <!--<td style="font-size: 16px; font-weight: 500">股票价格</td>-->
+                                <!--<td>-->
+                                    <!--<select class="select-item">-->
+                                        <!--<option value="">开盘价</option>-->
+                                        <!--<option value="">收盘价</option>-->
+                                        <!--<option value="">最高价</option>-->
+                                        <!--<option value="">最低价</option>-->
+                                    <!--</select>-->
+                                <!--</td>-->
+                                <!--<td>-->
+                                    <!--<select class="select-item">-->
+                                        <!--<option value="">大于</option>-->
+                                        <!--<option value="">小于</option>-->
+                                        <!--<option value="">等于</option>-->
+                                    <!--</select>-->
+                                <!--</td>-->
+                                <!--<td>-->
+                                    <!--<input type="text" style="width: 30px;">-->
+                                <!--</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td style="font-size: 16px; font-weight: 500">股票涨幅</td>-->
+                                <!--<td>-->
+                                    <!--<select class="select-item">-->
+                                        <!--<option value="">日涨幅</option>-->
+                                        <!--<option value="">月涨幅</option>-->
+                                    <!--</select>-->
+                                <!--</td>-->
+                                <!--<td>-->
+                                    <!--<select class="select-item">-->
+                                        <!--<option value="">大于</option>-->
+                                        <!--<option value="">小于</option>-->
+                                        <!--<option value="">等于</option>-->
+                                    <!--</select>-->
+                                <!--</td>-->
+                                <!--<td>-->
+                                    <!--<input type="text" style="width: 30px;">-->
+                                <!--</td>-->
+                            <!--</tr>-->
+                            <!--<tr>-->
+                                <!--<td style="font-size: 16px; font-weight: 500">成交量</td>-->
+                                <!--<td>-->
+                                    <!--<select class="select-item">-->
+                                        <!--<option value="">当日</option>-->
+                                        <!--<option value="">当周</option>-->
+                                        <!--<option value="">当月</option>-->
+                                    <!--</select>-->
+                                <!--</td>-->
+                                <!--<td>-->
+                                    <!--<select class="select-item">-->
+                                        <!--<option value="">大于</option>-->
+                                        <!--<option value="">小于</option>-->
+                                        <!--<option value="">等于</option>-->
+                                    <!--</select>-->
+                                <!--</td>-->
+                                <!--<td>-->
+                                    <!--<input type="text" style="width: 30px;">-->
+                                <!--</td>-->
+                            <!--</tr>-->
+                            <!--</tbody>-->
+                        <!--</table>-->
+                    <!--</div>-->
+                    <!--<div class="make-strategy-button">-->
+                        <!--<button id="startButtonTwo">开始回测</button>-->
+                    <!--</div>-->
+                <!--</div>-->
+            </div>
+            <div class="left-and-right-holder disappear">
+                <div class="param-holder">
+                    <div>
+                        <h4>收益统计</h4>
+                    </div>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>投资组合</th>
+                            <th>总收益</th>
+                            <th>年化收益</th>
+                            <th>夏普比率</th>
+                            <th>最大回撤率</th>
+                            <th>Beta</th>
+                            <th>Alpha</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>本策略</td>
+                            <td>1766.05%</td>
+                            <td>58.15%</td>
+                            <td>2.56</td>
+                            <td>22.13%</td>
+                            <td>0.31</td>
+                            <td>53.81%</td>
+                        </tr>
+                        <tr>
+                            <td>基准策略</td>
+                            <td>1766.05%</td>
+                            <td>58.15%</td>
+                            <td>2.56</td>
+                            <td>22.13%</td>
+                            <td>0.31</td>
+                            <td>53.81%</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="left-part">
+                    <h4>策略回测结果</h4>
+                    <div class="bootstrap-tab">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#">收益曲线</a></li>
+                            <li><a href="#">收益周期</a></li>
+                            <!--<li><a href="#">年化收益分布</a></li>-->
+                            <!--<li><a href="#">&#45;&#45;未定&#45;&#45;</a></li>-->
+                        </ul>
+                    </div>
+                    <div class="chart-holder"></div>
+                </div>
+                <!--标签页下面右边的放置评分栏的位置-->
+                <div class="right-part">
+                    <h4>策略评测</h4>
+                    <div class="score-holder"></div>
+                </div>
+            </div>
+            <div class="strategyResultPart disappear">
+                <div class="left-part">
+                    <h4>历史数据趋势拟合</h4>
+                    <div class="chart-holder"></div>
+                </div>
+                <!--标签页下面右边的放置评分栏的位置-->
+                <div class="right-part">
+                    <h4>明日趋势</h4>
+                    <div class="score-holder">
+                        <div>
+                            <p id="typeHolder" class="typeHolderTextColor">涨</p>
+                        </div>
+                        <div>
+                            <div class="valueTotalHolder lHolder">
+                                <p><span>预测置信度</span><p id="trustValueHolder">90%</p></p>
+                            </div>
+                            <div class="valueTotalHolder rHolder">
+                                <p><span>涨跌幅</span><p id="valueHolder">30%</p></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <!--页脚start-->
+    <div class="footer  container">
+        <div class="row">
+            <div class="left-footer col-sm-9">
+                <div>
+                    <h2>关于ProQuant</h2>
+                    <br>
+                    <p>ProQuant是一款基于提供股票市场情况展示，个股信息展示，股票各项指标预测功能于一体的多功能股票查询、
+                        <br>分析的软件。</p>
+                </div>
+            </div>
+            <div class="right-footer col-sm-3">
+                <div>
+                    <h2>关于我们</h2>
+                    <br>
+                    <p></p>
+                </div>
+                <div>
+                    <a href=""><img src="../images/weibo.png" alt="微博"></a>
+                    <a href=""><img src="../images/weixin.png" alt="微信"></a>
+                    <a href=""><img src="../images/qq.png" alt="QQ"></a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--页脚end-->
+
+</body>
+</html>

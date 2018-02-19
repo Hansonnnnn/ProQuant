@@ -1,0 +1,151 @@
+/*对股票对比页面添加样式*/
+
+.headLabel {
+    padding: 6px;
+    border-left: 5px solid #528FCC;
+    font-size: large;
+    font-weight: bold;
+    background-color: #cfe2f3;
+    margin-top: 100px;
+    margin-bottom: 15px;
+    color: #333333;
+}
+
+.chooseStockHead{
+    padding: 6px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #333333;
+}
+
+.whiteBackground{
+    background-color: white;
+}
+
+#searchTextField{
+    display: inline-block;
+    outline: none;
+    border-width: 0 0 2px 0;
+    border-color: #528FCC;
+    width: 150px;
+}
+
+/*设置placeholder字体颜色*/
+#searchTextField::-webkit-input-placeholder { /* WebKit browsers */
+    color:#333333;
+}
+#searchTextField:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:#333333;
+}
+#searchTextField::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:#333333;
+}
+#searchTextField:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:#333333;
+}
+
+/*元素中间对齐*/
+.centerAlignment{
+    text-align: center;
+}
+
+#stockContainer{
+    margin-top: 10px;
+    padding-left: 8%;
+    /*padding-right: 10%;*/
+}
+
+
+.stockCard{
+    /*float: left;*/
+    display: inline-block;
+    width: 38%;
+    margin-right: 8%;
+    margin-top: 10px;
+    background-color: #CFE2F3;
+    color: #1F4374;
+    padding: 2px 5px;
+    border-radius: 10px;
+}
+
+.stockCardName{
+    float: left;
+}
+
+.stockCardDelete{
+    float: right;
+    outline:none;
+}
+
+.stockCardDelete:hover{
+    color: #E81123;
+}
+
+#deleteAllButton{
+    width: 30%;
+    color: white;
+    background-color: #D47859;
+    border-radius: 5px;
+    padding: 4px 10px;
+    outline: none;
+}
+
+#compareButton{
+    width: 30%;
+    color: white;
+    background-color: #407FCE;
+    border-radius: 5px;
+    padding: 4px 10px;
+    outline: none;
+    margin-left: 23%;
+}
+
+/*热门股票按钮*/
+.hotStockButton{
+    width: 49%;
+    padding-bottom: 2px;
+    font-size: 18px;
+    background-color: white;
+    color: #67A7BA;
+    outline:none;
+}
+
+.compareIndex{
+    font-weight: bold;
+}
+
+.hotStockBottomBorder{
+    border-bottom: 2px solid #407Fce;
+}
+
+.addCompareStockButton{
+    outline:none;
+    color: white;
+    background-color: #67A7BA;
+    border-radius: 5px;
+    padding: 2px 4px;
+}
+
+.redFont{
+    color: #C10D01;
+}
+
+.greenFont{
+    color: #008000;
+}
+
+.displayNone{
+    display: none;
+}
+
+.displayInline{
+    display: inline;
+}
+
+.chartChooseButton{
+    outline: none;
+    padding: 0 4px 2px 4px;
+    font-size:16px;
+    background-color: transparent;
+    color: #67A7BA;
+}

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-6-3 2:17:17 by Hibernate Tools 5.2.1.Final -->
+<hibernate-mapping>
+    <class name="PO.user.UserTradeRecord" table="user_trade_record" catalog="proquant" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="id"/>
+            <generator class="assigned" />
+        </id>
+        <property name="username" type="string">
+            <column name="username" length="16" />
+        </property>
+        <property name="stockcode" type="string">
+            <column name="stockcode" length="45" />
+        </property>
+        <property name="tradenum" type="java.lang.Integer">
+            <column name="tradenum" />
+        </property>
+        <property name="tradetype" type="java.lang.Byte">
+            <column name="tradetype">
+                <comment>0 &#194;&#242;&#200;&#235; 1 &#194;&#244;&#179;&#246;</comment>
+            </column>
+        </property>
+        <property name="tradeprice" type="java.lang.Double">
+            <column name="tradeprice" precision="22" scale="0" />
+        </property>
+        <property name="date" type="timestamp">
+            <column name="date" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>
